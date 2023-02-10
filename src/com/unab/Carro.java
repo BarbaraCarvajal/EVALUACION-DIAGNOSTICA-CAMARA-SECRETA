@@ -1,7 +1,7 @@
 package com.unab;
 
 /**
- * @author Luis Zenteno
+ * @author Luis Zenteno,Barbara Carvajal, Maria Fernanda Villalobos
  *
  */
 public class Carro {
