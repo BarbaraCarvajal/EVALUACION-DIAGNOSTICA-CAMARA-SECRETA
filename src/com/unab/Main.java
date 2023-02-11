@@ -86,7 +86,8 @@ public class Main {
 // TODO: Duración máxima de 3 clases. 
 // TODO: Se revisará en uno de los equipos de los participantes
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Tablero tablero = new Tablero();
+		tablero.crearCarro();
 
 	}
 
