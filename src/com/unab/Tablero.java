@@ -2,10 +2,10 @@ package com.unab;
 
 import java.util.ArrayList;
 
-/*
- * @autor Luis Zenteno
+/**
+ * @author Luis Zenteno,Barbara Carvajal, María-Fernanda Villalobos
+ *
  */
-
 public class Tablero {
 
     //Array<Carro> listaCarro = new Array<Carro>();
