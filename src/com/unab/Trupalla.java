@@ -1,7 +1,7 @@
 package com.unab;
 
 /**
- * @author Luis Zenteno
+ * @author Luis Zenteno,Barbara Carvajal, María-Fernanda Villalobos
  *
  */
 public class Trupalla extends Carro {
