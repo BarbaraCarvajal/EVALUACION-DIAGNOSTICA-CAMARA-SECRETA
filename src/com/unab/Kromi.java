@@ -1,7 +1,7 @@
 package com.unab;
 import java.util.Scanner;
 /**
- * @author 56958
+ * @author Luis Zenteno,Barbara Carvajal, María-Fernanda Villalobos
  *
  */
 public class Kromi extends Carro {

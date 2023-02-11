@@ -4,10 +4,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * @autor Luis Zenteno
+/**
+ * @author Luis Zenteno,Barbara Carvajal, María-Fernanda Villalobos
+ *
  */
-
 public class Tablero {
 
     /*Clase “Tablero”: 
