@@ -2,7 +2,9 @@ package com.unab;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Luis Zenteno,Barbara Carvajal, María-Fernanda Villalobos
@@ -25,23 +27,41 @@ public class Tablero {
     Carro[] matrizCarro = new Carro[18];
     ArrayList<Huevo> listaHuevo = new ArrayList<Huevo>();
 
+    // tablero
+    int[][] matrizTablero = new int[15][15];
+
+    //fila y columna aleatorio
+    Random numRandom = new Random();
 
     //Crear Carro: crea una subclase de la clase Carro y la asigna a la lista respectiva. 
     //Recuerde que las coordenadas del carro se calculan de forma aleatoria, y no se 
     //puede traslapar un carro con otro.
     //instanciar
     public void crearCarro(){
-        for(int i = 0; i<3; i++){
-            matrizCarro[i] = new Kromi(null, null, 0, 2, null, null);
-        }
-        for(int x=3; x<8; x++){
-            matrizCarro[x] = new Caguano(null, null, 0, 0, null, null);
-        }
-        for(int j = 8; j<18; j++){
-            matrizCarro[j] = new Trupalla(null, null, 0, 0, 0, null);
-        }
+       
+        matrizCarro[0] = new Kromi("12-02-2000", 2, numRandom.nextInt(15), numRandom.nextInt(15), "1998", "Mercedes");
+        matrizCarro[1] = new Kromi("13-08-1993", 2, numRandom.nextInt(15), numRandom.nextInt(15), "1993", "Toyota");
+        matrizCarro[2] = new Kromi("12-09-2020", 1,numRandom.nextInt(15) , numRandom.nextInt(15), "2000", "BMW");
         
-        System.out.println(matrizCarro);
+        matrizCarro[3] = new Caguano("12-04-2000", 3, numRandom.nextInt(15) , numRandom.nextInt(15), "200", "naranja");
+        matrizCarro[4] = new Caguano("14-09-2010", 3, numRandom.nextInt(15) , numRandom.nextInt(15), "100", "rojo");
+        matrizCarro[5] = new Caguano("15-05-2002", 2, numRandom.nextInt(15) , numRandom.nextInt(15), "300", "rosa");
+        matrizCarro[6] = new Caguano("17-03-2005", 5, numRandom.nextInt(15) , numRandom.nextInt(15),"150", "celeste");
+        matrizCarro[7] = new Caguano("03-05-2005", 6, numRandom.nextInt(15) , numRandom.nextInt(15), "230", "negro");
+
+        matrizCarro[8] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla1");
+        matrizCarro[9] = new Trupalla("03-05-2005", 4, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla2");
+        matrizCarro[10] = new Trupalla("03-05-2005", 5, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla3");
+        matrizCarro[11] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla4");
+        matrizCarro[12] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla5");
+        matrizCarro[13] = new Trupalla("03-05-2005", 1, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla6");
+        matrizCarro[14] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla7");
+        matrizCarro[15] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla8");
+        matrizCarro[16] = new Trupalla("03-05-2005", 4, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla9");
+        matrizCarro[17] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) , numRandom.nextInt(15), 0, "trupalla10");
+
+
+       
     }
 
     //Lanzar Huevo: crea una instancia de la clase “Huevo”, solicita la coordenada de 
@@ -56,9 +76,14 @@ public class Tablero {
     //independiente de si acierta a un carro o no.Una vez que realiza la acción, 
     //debe calcular el puntaje obtenido hasta el momento.
     public void mostrarMatriz(){
-
+       
+    for (int fila = 0; fila < matrizTablero.length; fila++) {
+        System.out.println(Arrays.toString(matrizTablero[fila]));
     }
+    
+    
 
+}
     //Calcular puntaje: suma los puntajes asignados a cada lanzamiento y los 
     //entrega como resultado. Este método debe ser visible solo dentro de la 
     //clase, y es utilizado en los métodosde la misma clase. Clase “Huevo”: 

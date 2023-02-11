@@ -17,17 +17,21 @@ public class Carro {
     // Constructor
     // Atributos: cantidad de ocupantes, fecha de ingreso a institución y ubicación
     // (fila, columna)
-    public Carro() {
-        this.cantOcupantes = 4;
-        this.fechaIngreso = "11-02-2023";
-        this.fila = 0;
-        this.columna = 0;
-    }
+   
 
     //Desplegar datos básicos y coordenadas en el tablero.
     public void desplegarDatos() {
         System.out.println(this.toString());
     }
+
+    public Carro(String fechaIngreso, int cantOcupantes, int fila, int columna) {
+        this.fechaIngreso = fechaIngreso;
+        this.cantOcupantes = cantOcupantes;
+        this.fila = fila;
+        this.columna = columna;
+    }
+
+
 
     // Crear métodos get
     public int getCantOcupantes() {

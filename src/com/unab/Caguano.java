@@ -10,25 +10,34 @@ public class Caguano extends Carro {
 
     String alcanceTiro, colorConfeti;
 
-    public Caguano(String cantOcupantes, String fechaIngreso, int fila, int columna, String alcanceTiro,
+    
+
+    public Caguano(String fechaIngreso, int cantOcupantes, int fila, int columna, String alcanceTiro,
             String colorConfeti) {
-                
-        super(cantOcupantes, fechaIngreso, fila, columna);
-        this.alcanceTiro = "50 metros";
-        this.colorConfeti = getRandomColor();
+        super(fechaIngreso, cantOcupantes, fila, columna);
+        this.alcanceTiro = alcanceTiro;
+        this.colorConfeti = colorConfeti;
     }
 
     // Tomar un color de forma aleatoria desde la lista
     public String getRandomColor() {
         String color = "";
         // Crear lista tipo String 
-		List<String> colors = new ArrayList<>("violeta", "blanco", "azul", "celeste", "rojo", "verde", "rosado", "naranjo");
-        
+		List<String> colors = new ArrayList<>();
+        colors.add("violeta");
+        colors.add("blanco");
+        colors.add("azul");
+        colors.add("celeste");
+        colors.add("rojo");
+        colors.add("verde");
+        colors.add("rosado");
+        colors.add("naranjo");
         // boundIndex para seleccionar en sublista
 		int boundIndex = 3;
 
         // ThreadLocalRandom genera un número tipo int
-		list.get(
+        // revisar *
+		colors.get(
 			ThreadLocalRandom.current().nextInt(colors.size())
 			% boundIndex);
 		System.out.println(color);
