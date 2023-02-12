@@ -23,20 +23,12 @@ public class Caguano extends Carro {
     public String getRandomColor() {
         String color = "";
         // Crear lista tipo String 
-		List<String> colors = new ArrayList<>();
-        colors.add("violeta");
-        colors.add("blanco");
-        colors.add("azul");
-        colors.add("celeste");
-        colors.add("rojo");
-        colors.add("verde");
-        colors.add("rosado");
-        colors.add("naranjo");
+		List<String> colors = new ArrayList<String>(Arrays.asList("violeta","blanco","azul","celeste","rojo","verde","rosado","naranjo"));
+        System.out.println("ArrayList : " + colors);
         // boundIndex para seleccionar en sublista
 		int boundIndex = 3;
 
         // ThreadLocalRandom genera un número tipo int
-        // revisar *
 		colors.get(
 			ThreadLocalRandom.current().nextInt(colors.size())
 			% boundIndex);

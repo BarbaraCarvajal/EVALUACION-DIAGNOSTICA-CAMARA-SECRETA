@@ -4,6 +4,7 @@ package com.unab;
  * @author Luis Zenteno,Barbara Carvajal, María-Fernanda Villalobos
  *
  */
+ // Clase “Huevo”: define cada lanzamiento realizado dentro del tablero.
 public class Huevo {
 
     int fila, columna, puntajeLanzamiento;
@@ -14,4 +15,22 @@ public class Huevo {
         this.puntajeLanzamiento = puntajeLanzamiento;
     }
 
+    public void setColumna(int columna) {
+        this.columna = columna;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+
+    public int getColumna() {
+        return columna;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
 }
+
+

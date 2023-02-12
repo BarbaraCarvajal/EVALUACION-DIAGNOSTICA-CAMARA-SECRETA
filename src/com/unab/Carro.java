@@ -17,14 +17,7 @@ public class Carro {
     // Constructor
     // Atributos: cantidad de ocupantes, fecha de ingreso a institución y ubicación
     // (fila, columna)
-   
-
-    //Desplegar datos básicos y coordenadas en el tablero.
-    public void desplegarDatos() {
-        System.out.println(this.toString());
-    }
-
-    public Carro(String fechaIngreso, int cantOcupantes, int fila, int columna) {
+       public Carro(String fechaIngreso, int cantOcupantes, int fila, int columna) {
         this.fechaIngreso = fechaIngreso;
         this.cantOcupantes = cantOcupantes;
         this.fila = fila;
@@ -73,5 +66,10 @@ public class Carro {
         return("Este carro tiene asientos para "+ this.getCantOcupantes()+
 			" ocupantes,\n fue ingresado el " + this.getFechaIngreso()+" y está ubicado\n en la fila " +
              this.getFila()+" columna "+ this.getColumna() + ".");
+    }
+
+    //Desplegar datos básicos y coordenadas en el tablero.
+    public void desplegarDatos() {
+        System.out.println(this.toString());
     }
 }
