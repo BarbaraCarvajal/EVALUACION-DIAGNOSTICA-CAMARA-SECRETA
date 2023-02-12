@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.unab;
 import java.util.Scanner;
 /**
@@ -31,15 +28,7 @@ public class Main {
 // TODO: Solicitar otra fila y columna si quedase fuera de rango
 
 // TODO: Verificar si en la matriz está ubicado un vehículo o no:
-// TODO: Dar puntaje: proyectil da sobre una Kromi = 3 puntos, sobre Caguano= 2puntos, sobre Trupalla = 1 punto.
-// TODO: Puntajes :Kromi con 3 celdas atacadas (inutilizada) =  10 puntos adicionales. 
-// TODO:Puntajes: utilizar Caguano = 7 puntos adicionales.
-// TODO:Puntajes:Trupalla queda inutilizado con 1 huevo ==> sin puntaje adicional
-// TODO: Atributo: cantidad ilimitada de huevos a lanzar, huevo puede caer más de una vez sobre misma posición.
-// TODO: Puntajes :celda atacada  == “H” en matriz. 
-// TODO: Puntajes:  Celda atacada previamente NO da puntaje.
 // TODO: Indicar el puntaje total obtenido por el usuario al finalizar programa.
-
 
 // TODO: Crear Clase “Kromi” (child class) 
 // TODO: Atributo: año de fabricación y su marca.
@@ -52,20 +41,25 @@ public class Main {
 // TODO: Crear menú que despliegue acciones que contempla programa, y mostrar hasta que usuario salga del programa.
 // TODO: Considerar POO: Estructura de clases y superclases, conceptos de herencia y polimorfismos.
 // TODO: Implementar la mayor cantidad de conceptos vistos en cada una de las clases
-// TODO: Evitar la copia de código directo, tanto de Internet como de pares.
-// TODO: Se valorará la participación y el trabajo colaborativo.
-// TODO: Revisión se realizará durante clases.
 // TODO: Duración máxima de 3 clases. 
 // TODO: Se revisará en uno de los equipos de los participantes
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
 		Tablero tablero = new Tablero();
-		System.out.println("\r\n\t\t¡A Jugar!\r\n");  
-		tablero.mostrarMatriz();
+		// Graficas graph = new Graficas();
+		
+		tablero.crearTablero();
 		tablero.crearCarro();
-		tablero.lanzarHuevo(scanner);
-		tablero.mostrarMatriz();
+		System.out.println("\r\n\t\t¡A Jugar!");  
+		System.out.println("\r\n\t\tPuntaje Inicial: 0");  
+
+		boolean gameOn = true;
+		while (gameOn) {
+			tablero.mostrarMatriz();
+			tablero.lanzarHuevo(scanner);
+		}
+
 
 		
 
