@@ -48,32 +48,38 @@ public class Main {
 	//El programa debe contar con un menú que despliegue las acciones que
   //contempla el programa,ydebemostrarsetantasvecesseanecesariohastaelusuario indique lo contrario.
 
-	public void menu(){
+	static public void menu(){
+
+		System.out.println("¡Hola! ¿Cómo te llamas?");
+		String nombreJugador = scanner.nextLine();
+		System.out.println("Bienvenid@ "+nombreJugador);
+		Tablero tablero = new Tablero();
+		// Graficas graph = new Graficas();
+		
+		tablero.crearTablero();
+		tablero.crearCarro();
 
 		boolean condMenu = true;
 		while (condMenu){
-			System.out.println("Ingrese su opción");
+			System.out.println(nombreJugador+" ingresa tu opción");
 			System.out.println(""
-													+"Opcion 1) " 
-													+"Opcion 2) " 
-													+"Opcion 3) "
-													+"Opcion 4) SALIR ");
+													+"\nOpcion 1) Lanzar Huevo " 
+													+"\nOpcion 2) Terminar el juego y salir ");
 			String opcion = scanner.nextLine();
 			if (opcion.equals("1")){
-
+				System.out.println("\r\n\t\t¡A Jugar!");  
+				System.out.println("\r\n\t\tPuntaje Inicial: 0");  
+				tablero.mostrarMatriz();
+				tablero.lanzarHuevo(scanner);
 			}else if (opcion.equals("2")){
-
-			}else if (opcion.equals("2")){
-				
-			}else if (opcion.equals("4")){
-				System.out.println("Hasta luego");
+				System.out.println("Puntaje Total: " );
 				condMenu = false;
 			}
 		}
 	}
 	public static void main(String[] args) {
-
-
+		menu();
+/* 
 		
 		Tablero tablero = new Tablero();
 		// Graficas graph = new Graficas();
@@ -87,6 +93,6 @@ public class Main {
 		while (gameOn) {
 			tablero.mostrarMatriz();
 			tablero.lanzarHuevo(scanner);
-		}
+		}*/
 	}
 }
