@@ -43,9 +43,38 @@ public class Main {
 // TODO: Implementar la mayor cantidad de conceptos vistos en cada una de las clases
 // TODO: Duración máxima de 3 clases. 
 // TODO: Se revisará en uno de los equipos de los participantes
+
+	static Scanner scanner = new Scanner(System.in);
+	//El programa debe contar con un menú que despliegue las acciones que
+  //contempla el programa,ydebemostrarsetantasvecesseanecesariohastaelusuario indique lo contrario.
+
+	public void menu(){
+
+		boolean condMenu = true;
+		while (condMenu){
+			System.out.println("Ingrese su opción");
+			System.out.println(""
+													+"Opcion 1) " 
+													+"Opcion 2) " 
+													+"Opcion 3) "
+													+"Opcion 4) SALIR ");
+			String opcion = scanner.nextLine();
+			if (opcion.equals("1")){
+
+			}else if (opcion.equals("2")){
+
+			}else if (opcion.equals("2")){
+				
+			}else if (opcion.equals("4")){
+				System.out.println("Hasta luego");
+				condMenu = false;
+			}
+		}
+	}
 	public static void main(String[] args) {
 
-		Scanner scanner = new Scanner(System.in);
+
+		
 		Tablero tablero = new Tablero();
 		// Graficas graph = new Graficas();
 		
@@ -59,10 +88,5 @@ public class Main {
 			tablero.mostrarMatriz();
 			tablero.lanzarHuevo(scanner);
 		}
-
-
-		
-
 	}
-
 }

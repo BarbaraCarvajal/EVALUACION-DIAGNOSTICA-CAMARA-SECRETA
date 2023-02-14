@@ -22,6 +22,9 @@ public class Tablero {
     int conteoHuevos = 0;
     // tablero
     String[][] matrizTablero = new String[16][16];
+    // Crear instancia de clase “Huevo”,
+    static Huevo superHuevo = new Huevo(0, 0, 0);
+
 
     // Calcular coordenadas del carro de forma aleatoria sin traslaparse entre si.
     // fila y columna aleatorio
@@ -83,8 +86,7 @@ public class Tablero {
     // Solicitar coordenada de lanzamiento,asigna el puntaje al movimiento y la
     // almacena en el listado correspondiente.
     public void lanzarHuevo(Scanner scanner) {
-        // Crear instancia de clase “Huevo”,
-        Huevo superHuevo = new Huevo(0, 0, 0);
+        
         listaHuevo.add(superHuevo);
         System.out.print("> Ingresa Fila y columna que deseas atacar (Ej: a1): ");
         String input = scanner.nextLine();
@@ -136,7 +138,6 @@ public class Tablero {
         // System.out.println(Arrays.toString(matrizTablero[fila]));
         // }
     }
-
     // Calcular puntaje por cada lanzamiento y mostrar resultado.
     // Este método visible sólo dentro de clase, y es utilizado en métodos la clase.
     public void calcularPuntaje(String input, String celdaAtacar) {
