@@ -61,22 +61,24 @@ public class Main {
 		tablero.tableroFalso();
 		boolean condMenu = true;
 		while (condMenu){
-			System.out.println(nombreJugador+" ingresa tu opción");
-			System.out.println("\r\n\t\tOpcion 1) Iniciar Juego\r\n\t\tOpcion 2) Lanzar Huevo\r\n\t\tOpcion 3) Salir ");
+			System.out.println(nombreJugador+", ingresa tu opción:");
+			System.out.println("\r\n\tOpcion 1) Iniciar Juego\r\n\tOpcion 2) Lanzar Huevo\r\n\tOpcion 3) Salir ");
 			System.out.print("\nOpcion:  ");
 
 			String opcion = scanner.nextLine();
 			if (opcion.equals("1")){
 				System.out.println("\r\n\t\t   ¡A Jugar!");  
 				System.out.println("\r\n\t\tPuntaje Inicial: 0");  
-				tablero.mostrarMatrizFalsa();
+				tablero.mostrarMatrizControl();
 				// tablero.mostrarMatriz();
 				tablero.lanzarHuevo(scanner);
+
 			}else if (opcion.equals("2")){
-				tablero.mostrarMatriz();
+				tablero.mostrarMatrizControl();
+				tablero.lanzarHuevo(scanner);
 				
 			}else if (opcion.equals("3")){
-				System.out.println("Puntaje Final: " );
+				// System.out.println("Puntaje Final: " );
 				condMenu = false;
 			} else {
 				System.out.println("Opción inválida");
