@@ -164,37 +164,47 @@ public class Tablero {
         Huevo superHuevo = new Huevo(0, 0, 0);
         listaHuevo.add(superHuevo);
         puntajeInstancia = 0;
-        System.out.print("> Ingresa Fila y columna que deseas atacar (Ej: a1): ");
+        boolean condCoordenada = true;
+        while (condCoordenada){
+            System.out.print("> Ingresa Fila y columna que deseas atacar (Ej: a1): ");
         String input = scanner.nextLine();
-
-        // FIXME: Se podría validar input para que sea vocal de lista o N° del 1-15
-        String colAtaque = input.substring(0, 1);
-        int filaAtaque = Integer.parseInt(input.substring(1));
-        superHuevo.setFila(filaAtaque);
-        filaSH = superHuevo.getFila();
-
-        for (String letra : columnas) {
-            if (colAtaque.equals(letra)) {
-                superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
-                colSH = superHuevo.getColumna();
+        // validacion
+        if (input.matches("^[a-mo-o&&[^ñÑ]](1[0-5]|[1-9])$")){
+            String colAtaque = input.substring(0, 1);
+            int filaAtaque = Integer.parseInt(input.substring(1));
+            superHuevo.setFila(filaAtaque);
+            filaSH = superHuevo.getFila();
+    
+            for (String letra : columnas) {
+                if (colAtaque.equals(letra)) {
+                    superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
+                    colSH = superHuevo.getColumna();
+                }
             }
+    
+            String celdaAtacar = matrizControl[filaSH][colSH];
+            if (celdaAtacar.equals(" H")) {
+                System.out.println(" La ubicación '" + input + "' ya había sido masacrada con el SuperHuevo");
+                System.out.println(" ¡Intenta nuevamente!");
+            } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
+                // TODO: reemplazar "H" en vez de agregar
+                calcularPuntaje();
+                matrizControl[filaSH][colSH] = " H";
+            } else {
+                matrizControl[filaSH][colSH] = " H";
+                System.out.println(" No le achuntaste :´( ");
+                System.out.println(" Enfoca el ojo y DALE!");
+    
+            }
+            mostrarMatrizControl();
+
+
+        }else{
+            System.out.println("Coordenadas invalidas... ¡intenta otra vez!");
         }
 
-        String celdaAtacar = matrizControl[filaSH][colSH];
-        if (celdaAtacar.equals(" H")) {
-            System.out.println(" La ubicación '" + input + "' ya había sido masacrada con el SuperHuevo");
-            System.out.println(" ¡Intenta nuevamente!");
-        } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
-            // TODO: reemplazar "H" en vez de agregar
-            calcularPuntaje();
-            matrizControl[filaSH][colSH] = " H";
-        } else {
-            matrizControl[filaSH][colSH] = " H";
-            System.out.println(" No le achuntaste :´( ");
-            System.out.println(" Enfoca el ojo y DALE!");
-
-        }
-        mostrarMatrizControl();
+    }
+       
     }
 
     // Obtener indice de arreglo.
