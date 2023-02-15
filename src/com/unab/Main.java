@@ -58,41 +58,33 @@ public class Main {
 		
 		tablero.crearTablero();
 		tablero.crearCarro();
-
+		tablero.tableroFalso();
 		boolean condMenu = true;
 		while (condMenu){
 			System.out.println(nombreJugador+" ingresa tu opción");
-			System.out.println(""
-													+"\nOpcion 1) Lanzar Huevo " 
-													+"\nOpcion 2) Terminar el juego y salir ");
+			System.out.println("\r\n\t\tOpcion 1) Iniciar Juego\r\n\t\tOpcion 2) Lanzar Huevo\r\n\t\tOpcion 3) Salir ");
+			System.out.print("\nOpcion:  ");
+
 			String opcion = scanner.nextLine();
 			if (opcion.equals("1")){
-				System.out.println("\r\n\t\t¡A Jugar!");  
+				System.out.println("\r\n\t\t   ¡A Jugar!");  
 				System.out.println("\r\n\t\tPuntaje Inicial: 0");  
-				tablero.mostrarMatriz();
+				tablero.mostrarMatrizFalsa();
+				// tablero.mostrarMatriz();
 				tablero.lanzarHuevo(scanner);
 			}else if (opcion.equals("2")){
-				System.out.println("Puntaje Total: " );
+				tablero.mostrarMatriz();
+				
+			}else if (opcion.equals("3")){
+				System.out.println("Puntaje Final: " );
 				condMenu = false;
+			} else {
+				System.out.println("Opción inválida");
 			}
 		}
 	}
 	public static void main(String[] args) {
 		menu();
-/* 
-		
-		Tablero tablero = new Tablero();
-		// Graficas graph = new Graficas();
-		
-		tablero.crearTablero();
-		tablero.crearCarro();
-		System.out.println("\r\n\t\t¡A Jugar!");  
-		System.out.println("\r\n\t\tPuntaje Inicial: 0");  
 
-		boolean gameOn = true;
-		while (gameOn) {
-			tablero.mostrarMatriz();
-			tablero.lanzarHuevo(scanner);
-		}*/
 	}
 }
