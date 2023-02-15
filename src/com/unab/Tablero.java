@@ -24,7 +24,6 @@ public class Tablero {
     // Crear instancia de clase “Huevo”,
     Huevo superHuevo = new Huevo(0, 0, 0);
 
-
     // Calcular coordenadas del carro de forma aleatoria sin traslaparse entre si.
     // fila y columna aleatorio
     Random numRandom = new Random();
@@ -42,36 +41,55 @@ public class Tablero {
 
     // Puntaje Total
     int puntajeTotal = 0;
-
+    private int filaSH;
+    private int colSH;
+    private int puntajeInstancia;
 
     // Crear una subclase de clase Carro y asignar a lista respectiva.
     public void crearCarro() {
 
-        
-     //TODO: Validar choque de carros
-        matrizCarro[0] = new Kromi("12-02-2000", 2, numRandom.nextInt(1,14), numRandom.nextInt(1,16), "1998", "Mercedes");
-        matrizCarro[1] = new Kromi("13-08-1993", 2, numRandom.nextInt(1,14), numRandom.nextInt(1,16), "1993", "Toyota");
-        matrizCarro[2] = new Kromi("12-09-2020", 1, numRandom.nextInt(1,14), numRandom.nextInt(1,16), "2000", "BMW");
+        // TODO: Validar choque de carros
+        matrizCarro[0] = new Kromi("12-02-2000", 2, numRandom.nextInt(13) + 1, numRandom.nextInt(15) + 1, "1998",
+                "Mercedes");
+        matrizCarro[1] = new Kromi("13-08-1993", 2, numRandom.nextInt(13) + 1, numRandom.nextInt(15) + 1, "1993",
+                "Toyota");
+        matrizCarro[2] = new Kromi("12-09-2020", 1, numRandom.nextInt(13) + 1, numRandom.nextInt(15) + 1, "2000",
+                "BMW");
 
-        matrizCarro[3] = new Caguano("12-04-2000", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "200", "naranja");
-        matrizCarro[4] = new Caguano("15-09-2010", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "100", "rojo");
-        matrizCarro[5] = new Caguano("15-05-2002", 2, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "300", "rosa");
-        matrizCarro[6] = new Caguano("17-03-2005", 5, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "150", "celeste");
-        matrizCarro[7] = new Caguano("03-05-2005", 6, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "230", "negro");
+        matrizCarro[3] = new Caguano("12-04-2000", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "200",
+                "naranja");
+        matrizCarro[4] = new Caguano("15-09-2010", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "100",
+                "rojo");
+        matrizCarro[5] = new Caguano("15-05-2002", 2, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "300",
+                "rosa");
+        matrizCarro[6] = new Caguano("17-03-2005", 5, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "150",
+                "celeste");
+        matrizCarro[7] = new Caguano("03-05-2005", 6, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "230",
+                "negro");
 
-        matrizCarro[8] = new Trupalla("03-05-2005", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla1");
-        matrizCarro[9] = new Trupalla("03-05-2005", 4, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla2");
-        matrizCarro[10] = new Trupalla("03-05-2005", 5, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla3");
-        matrizCarro[11] = new Trupalla("03-05-2005", 2, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla4");
-        matrizCarro[12] = new Trupalla("03-05-2005", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla5");
-        matrizCarro[13] = new Trupalla("03-05-2005", 1, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla6");
-        matrizCarro[14] = new Trupalla("03-05-2005", 2, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla7");
-        matrizCarro[15] = new Trupalla("03-05-2005", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla8");
-        matrizCarro[16] = new Trupalla("03-05-2005", 4, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla9");
-        matrizCarro[17] = new Trupalla("03-05-2005", 2, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla10");
+        matrizCarro[8] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla1");
+        matrizCarro[9] = new Trupalla("03-05-2005", 4, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla2");
+        matrizCarro[10] = new Trupalla("03-05-2005", 5, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla3");
+        matrizCarro[11] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla4");
+        matrizCarro[12] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla5");
+        matrizCarro[13] = new Trupalla("03-05-2005", 1, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla6");
+        matrizCarro[14] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla7");
+        matrizCarro[15] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla8");
+        matrizCarro[16] = new Trupalla("03-05-2005", 4, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla9");
+        matrizCarro[17] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+                "trupalla10");
 
-        
     }
+
     public void crearTablero() {
         for (int i = 1; i < matrizTablero.length; i++) {
             matrizTablero[0][0] = "   ";
@@ -88,9 +106,9 @@ public class Tablero {
         }
     }
 
-    public void tableroFalso(){
+    public void tableroFalso() {
 
-         for (int i = 1; i < matrizControl.length; i++) {
+        for (int i = 1; i < matrizControl.length; i++) {
             matrizControl[0][0] = "   ";
             matrizControl[0][i] = columnas[i - 1] + " ";
 
@@ -108,24 +126,24 @@ public class Tablero {
             matrizControl[matrizCarro[0].fila + 2][matrizCarro[0].columna] = " K";
 
             matrizControl[matrizCarro[1].fila][matrizCarro[1].columna] = " K";
-            matrizControl[matrizCarro[1].fila+1][matrizCarro[1].columna] = " K";
-            matrizControl[matrizCarro[1].fila+2][matrizCarro[1].columna] = " K";
+            matrizControl[matrizCarro[1].fila + 1][matrizCarro[1].columna] = " K";
+            matrizControl[matrizCarro[1].fila + 2][matrizCarro[1].columna] = " K";
 
             matrizControl[matrizCarro[2].fila][matrizCarro[2].columna] = " K";
-            matrizControl[matrizCarro[2].fila+1][matrizCarro[2].columna] = " K";
-            matrizControl[matrizCarro[2].fila+2][matrizCarro[2].columna] = " K";
+            matrizControl[matrizCarro[2].fila + 1][matrizCarro[2].columna] = " K";
+            matrizControl[matrizCarro[2].fila + 2][matrizCarro[2].columna] = " K";
 
             matrizControl[matrizCarro[3].fila][matrizCarro[3].columna] = " C";
-            matrizControl[matrizCarro[3].fila][matrizCarro[3].columna +1 ] = " C";
-            matrizControl[matrizCarro[4].fila ][matrizCarro[4].columna] = " C";
-            matrizControl[matrizCarro[4].fila][matrizCarro[4].columna +1 ] = " C";
+            matrizControl[matrizCarro[3].fila][matrizCarro[3].columna + 1] = " C";
+            matrizControl[matrizCarro[4].fila][matrizCarro[4].columna] = " C";
+            matrizControl[matrizCarro[4].fila][matrizCarro[4].columna + 1] = " C";
             matrizControl[matrizCarro[5].fila][matrizCarro[5].columna] = " C";
-            matrizControl[matrizCarro[5].fila][matrizCarro[5].columna +1 ] = " C";
+            matrizControl[matrizCarro[5].fila][matrizCarro[5].columna + 1] = " C";
             matrizControl[matrizCarro[6].fila][matrizCarro[6].columna] = " C";
-            matrizControl[matrizCarro[6].fila][matrizCarro[6].columna +1 ] = " C";
+            matrizControl[matrizCarro[6].fila][matrizCarro[6].columna + 1] = " C";
             matrizControl[matrizCarro[7].fila][matrizCarro[7].columna] = " C";
-            matrizControl[matrizCarro[7].fila][matrizCarro[7].columna+1] = " C";
-            
+            matrizControl[matrizCarro[7].fila][matrizCarro[7].columna + 1] = " C";
+
             matrizControl[matrizCarro[8].fila][matrizCarro[8].columna] = " T";
             matrizControl[matrizCarro[9].fila][matrizCarro[9].columna] = " T";
             matrizControl[matrizCarro[10].fila][matrizCarro[10].columna] = " T";
@@ -144,8 +162,8 @@ public class Tablero {
     public void lanzarHuevo(Scanner scanner) {
 
         Huevo superHuevo = new Huevo(0, 0, 0);
-        
         listaHuevo.add(superHuevo);
+        puntajeInstancia = 0;
         System.out.print("> Ingresa Fila y columna que deseas atacar (Ej: a1): ");
         String input = scanner.nextLine();
 
@@ -153,29 +171,30 @@ public class Tablero {
         String colAtaque = input.substring(0, 1);
         int filaAtaque = Integer.parseInt(input.substring(1));
         superHuevo.setFila(filaAtaque);
+        filaSH = superHuevo.getFila();
 
         for (String letra : columnas) {
             if (colAtaque.equals(letra)) {
                 superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
+                colSH = superHuevo.getColumna();
             }
         }
-        String celdaAtacar = matrizControl[superHuevo.fila][superHuevo.columna];
-        if (celdaAtacar.equals(" H")){
-            System.out.println(" La ubicación '" + input + "' ya había sido masacrado con el SuperHuevo" );
-            System.out.println(" ¡Intenta nuevamente!" );           
+
+        String celdaAtacar = matrizControl[filaSH][colSH];
+        if (celdaAtacar.equals(" H")) {
+            System.out.println(" La ubicación '" + input + "' ya había sido masacrada con el SuperHuevo");
+            System.out.println(" ¡Intenta nuevamente!");
         } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
-            //TODO: reemplazar "H" en vez de agregar
-            matrizControl[superHuevo.fila][superHuevo.columna].replace(matrizControl[superHuevo.fila][superHuevo.columna],  " H");
-            calcularPuntaje(superHuevo.fila, superHuevo.columna);
+            // TODO: reemplazar "H" en vez de agregar
+            calcularPuntaje();
+            matrizControl[filaSH][colSH] = " H";
         } else {
-            matrizControl[superHuevo.fila][superHuevo.columna] = " H";
-            System.out.println(" No le achuntaste :´( " );
+            matrizControl[filaSH][colSH] = " H";
+            System.out.println(" No le achuntaste :´( ");
             System.out.println(" Enfoca el ojo y DALE!");
 
         }
-        
-        conteoHuevos =+ 1;
-
+        mostrarMatrizControl();
     }
 
     // Obtener indice de arreglo.
@@ -185,8 +204,6 @@ public class Tablero {
     }
 
     // Mostrar carros existentes y lanzamientos registrados(“H”).
-    // independiente de si acierta a un carro o no.
-    // Realizada la acción, calcular puntaje obtenido hasta el momento.
     public void mostrarMatriz() {
         for (String[] fila : matrizTablero) {
             String filaStr = String.join(" ", fila);
@@ -194,11 +211,9 @@ public class Tablero {
         }
         System.out.println("\r\n\t\tPuntaje Total: " + puntajeTotal);
 
-        // for (int fila = 0; fila < matrizTablero.length; fila++) {
-        // System.out.println(Arrays.toString(matrizTablero[fila]));
-        // }
     }
 
+    // Controlar jugadas entre lanzamientos y carros
     public void mostrarMatrizControl() {
         for (String[] fila : matrizControl) {
             String filaStr = String.join(" ", fila);
@@ -206,62 +221,125 @@ public class Tablero {
         }
         System.out.println("\r\n\t\tPuntaje Total: " + puntajeTotal);
 
-        // for (int fila = 0; fila < matrizTablero.length; fila++) {
-        // System.out.println(Arrays.toString(matrizTablero[fila]));
-        // }
     }
 
-
     // Calcular puntaje por cada lanzamiento y mostrar resultado.
-    public void calcularPuntaje( int filaAtacar, int colAtacar) {
-        String celdaAtacar = matrizControl[filaAtacar][colAtacar];
+    public void calcularPuntaje() {
+        String celdaAtacar = matrizControl[filaSH][colSH];
         // Celdas verticales
-        //TODO: corregir puntaje
-        String kromiArriba1 = matrizControl[superHuevo.fila - 1][superHuevo.columna];
-        String kromiArriba2 = matrizControl[superHuevo.fila - 2][superHuevo.columna];
-        String kromiAbajo1 = matrizControl[superHuevo.fila + 1][superHuevo.columna];
-        String kromiAbajo2 = matrizControl[superHuevo.fila + 2][superHuevo.columna];
+        String kromiArriba1 = matrizControl[filaSH - 2][colSH];
+        String kromiArriba2 = matrizControl[filaSH - 1][colSH];
+        String kromiAbajo1 = matrizControl[filaSH + 1][colSH];
+        String kromiAbajo2 = matrizControl[filaSH + 2][colSH];
 
-        // Celdas horizontales
-        String caguanoAntes = matrizControl[superHuevo.fila][superHuevo.columna - 1];
-        String caguanoDespués = matrizControl[superHuevo.fila][superHuevo.columna + 1];
+        // // Celdas horizontales
+        String caguanoIzq = matrizControl[filaSH][colSH - 1];
+        String caguanoDer = matrizControl[filaSH][colSH + 1];
 
         String carro = "";
         if (celdaAtacar.equals(" T")) {
-            superHuevo.puntajeLanzamiento =+ trupalla;
+            superHuevo.setPuntajeLanzamiento(trupalla);
+            System.out.println("Puntaje T : " + superHuevo.getPuntajeLanzamiento());
             System.out.println("¡Genial! Le diste a un Trupalla con tu SuperHuevo");
-            
+
         } else if (celdaAtacar.equals(" K")) {
             carro = "Kromi";
-            superHuevo.puntajeLanzamiento =+ kromi;
-            if (filaAtacar)
-            if ((kromiAbajo1.equals(" H") && kromiAbajo2.equals(" H")) || (kromiArriba1.equals(" H") && kromiArriba2.equals(" H")) ||  (kromiArriba1.equals(" H") && kromiAbajo1.equals(" H"))) {
-                superHuevo.puntajeLanzamiento = + kromiFatality;
-                System.out.println("\r\nFatality!");
-                System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
-                
+            superHuevo.setPuntajeLanzamiento(kromi);
+            System.out.println("Puntaje K : " + superHuevo.getPuntajeLanzamiento());
+
+            if (filaSH == 15) {
+                if ((kromiArriba1.equals(" H") && kromiArriba2.equals(" H"))) {
+                    puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
+                    superHuevo.setPuntajeLanzamiento(puntajeInstancia);
+                    System.out.println("\r\nFatality!");
+                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+
+                } else {
+                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                }
+
+            } else if (filaSH == 1) {
+                if (kromiAbajo1.equals(" H") && kromiAbajo2.equals(" H")) {
+                    puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
+                    superHuevo.setPuntajeLanzamiento(puntajeInstancia);
+                    System.out.println("\r\nFatality!");
+                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+
+                } else {
+                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                }
+            } else if (filaSH == 2 || filaSH == 14) {
+                if ((kromiAbajo1.equals(" H") && kromiArriba2.equals(" H"))) {
+                    puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
+                    superHuevo.setPuntajeLanzamiento(puntajeInstancia);
+                    System.out.println("\r\nFatality!");
+                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+
+                } else {
+                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                }
+
             } else {
-                System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                if ((kromiAbajo1.equals(" H") && kromiArriba2.equals(" H"))
+                        || (kromiArriba1.equals(" H") && kromiArriba2.equals(" H"))
+                        || (kromiAbajo1.equals(" H") && kromiAbajo2.equals(" H"))) {
+                    puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
+                    superHuevo.setPuntajeLanzamiento(puntajeInstancia);
+                    System.out.println("\r\nFatality!");
+                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+
+                } else {
+                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                }
             }
+
         } else {
             carro = "Caguano";
-            superHuevo.puntajeLanzamiento =+ caguano;
-            if (caguanoAntes.equals(" H") || caguanoDespués.equals(" H")) {
-                superHuevo.puntajeLanzamiento = + caguanoFatality;
-                System.out.println("\r\nFatality!");
-                System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+            superHuevo.setPuntajeLanzamiento(caguano);
+            System.out.println("Puntaje C : " + superHuevo.getPuntajeLanzamiento());
+
+            if (colSH == 15) {
+                if (caguanoIzq.equals(" H")) {
+                    puntajeInstancia = superHuevo.getPuntajeLanzamiento() + caguanoFatality;
+                    superHuevo.setPuntajeLanzamiento(puntajeInstancia);
+                    System.out.println("\r\nFatality!");
+                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                } else {
+                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                }
+            } else if (colSH == 1) {
+                if (caguanoDer.equals(" H")) {
+                    puntajeInstancia = superHuevo.getPuntajeLanzamiento() + caguanoFatality;
+                    superHuevo.setPuntajeLanzamiento(puntajeInstancia);
+                    System.out.println("\r\nFatality!");
+                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                } else {
+                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                }
             } else {
-                System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                if (caguanoIzq.equals(" H") || caguanoDer.equals(" H")) {
+                    puntajeInstancia = superHuevo.getPuntajeLanzamiento() + caguanoFatality;
+                    superHuevo.setPuntajeLanzamiento(puntajeInstancia);
+                    System.out.println("\r\nFatality!");
+                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                } else {
+                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                }
+
             }
         }
-        for (Huevo superHuevo : listaHuevo) {            
-            puntajeTotal += superHuevo.puntajeLanzamiento;
+        //FIXME: obtener instancia de lista
+        System.out.println("array huevo: " + listaHuevo);
+        for (Huevo superHuevo : listaHuevo) {
+            System.out.println("instancia  huevo: " + superHuevo);
+            System.out.println("puntaje SH: " + superHuevo.getPuntajeLanzamiento());
+            System.out.println("puntaje Total: " + puntajeTotal);
+            puntajeTotal = +superHuevo.getPuntajeLanzamiento();
         }
-        
 
     }
 
-    //Crear getter y setter por cada clase
+    // Crear getter y setter por cada clase
     public Carro[] getMatrizCarro() {
         return matrizCarro;
     }
@@ -284,6 +362,14 @@ public class Tablero {
 
     public void setMatrizTablero(String[][] matrizTablero) {
         this.matrizTablero = matrizTablero;
+    }
+
+    public String[][] getMatrizControl() {
+        return matrizControl;
+    }
+
+    public void setMatrizControl(String[][] matrizControl) {
+        this.matrizControl = matrizControl;
     }
 
     public Random getNumRandom() {

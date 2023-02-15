@@ -31,6 +31,14 @@ public class Huevo {
         return fila;
     }
 
+    public int getPuntajeLanzamiento() {
+        return puntajeLanzamiento;
+    }
+
+    public void setPuntajeLanzamiento(int puntajeLanzamiento) {
+        this.puntajeLanzamiento = puntajeLanzamiento;
+    }
+
 }
 
 
