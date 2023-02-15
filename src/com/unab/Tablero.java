@@ -20,7 +20,7 @@ public class Tablero {
     int conteoHuevos = 0;
     // tablero
     String[][] matrizTablero = new String[16][16];
-    String[][] matrizFalsa = new String[16][16];
+    String[][] matrizControl = new String[16][16];
     // Crear instancia de clase “Huevo”,
     Huevo superHuevo = new Huevo(0, 0, 0);
 
@@ -90,52 +90,52 @@ public class Tablero {
 
     public void tableroFalso(){
 
-         for (int i = 1; i < matrizFalsa.length; i++) {
-            matrizFalsa[0][0] = "   ";
-            matrizFalsa[0][i] = columnas[i - 1] + " ";
+         for (int i = 1; i < matrizControl.length; i++) {
+            matrizControl[0][0] = "   ";
+            matrizControl[0][i] = columnas[i - 1] + " ";
 
-            for (int celdas = 1; celdas < matrizFalsa[i].length; celdas++) {
+            for (int celdas = 1; celdas < matrizControl[i].length; celdas++) {
                 if (celdas > 9) {
-                    matrizFalsa[celdas][0] = Integer.toString(celdas);
+                    matrizControl[celdas][0] = Integer.toString(celdas);
                 } else {
-                    matrizFalsa[celdas][0] = " " + Integer.toString(celdas);
+                    matrizControl[celdas][0] = " " + Integer.toString(celdas);
                 }
-                matrizFalsa[i][celdas] = "  ";
+                matrizControl[i][celdas] = "  ";
             }
 
-            matrizFalsa[matrizCarro[0].fila][matrizCarro[0].columna] = " K";
-            matrizFalsa[matrizCarro[0].fila + 1][matrizCarro[0].columna] = " K";
-            matrizFalsa[matrizCarro[0].fila + 2][matrizCarro[0].columna] = " K";
+            matrizControl[matrizCarro[0].fila][matrizCarro[0].columna] = " K";
+            matrizControl[matrizCarro[0].fila + 1][matrizCarro[0].columna] = " K";
+            matrizControl[matrizCarro[0].fila + 2][matrizCarro[0].columna] = " K";
 
-            matrizFalsa[matrizCarro[1].fila][matrizCarro[1].columna] = " K";
-            matrizFalsa[matrizCarro[1].fila+1][matrizCarro[1].columna] = " K";
-            matrizFalsa[matrizCarro[1].fila+2][matrizCarro[1].columna] = " K";
+            matrizControl[matrizCarro[1].fila][matrizCarro[1].columna] = " K";
+            matrizControl[matrizCarro[1].fila+1][matrizCarro[1].columna] = " K";
+            matrizControl[matrizCarro[1].fila+2][matrizCarro[1].columna] = " K";
 
-            matrizFalsa[matrizCarro[2].fila][matrizCarro[2].columna] = " K";
-            matrizFalsa[matrizCarro[2].fila+1][matrizCarro[2].columna] = " K";
-            matrizFalsa[matrizCarro[2].fila+2][matrizCarro[2].columna] = " K";
+            matrizControl[matrizCarro[2].fila][matrizCarro[2].columna] = " K";
+            matrizControl[matrizCarro[2].fila+1][matrizCarro[2].columna] = " K";
+            matrizControl[matrizCarro[2].fila+2][matrizCarro[2].columna] = " K";
 
-            matrizFalsa[matrizCarro[3].fila][matrizCarro[3].columna] = " C";
-            matrizFalsa[matrizCarro[3].fila][matrizCarro[3].columna +1 ] = " C";
-            matrizFalsa[matrizCarro[4].fila ][matrizCarro[4].columna] = " C";
-            matrizFalsa[matrizCarro[4].fila][matrizCarro[4].columna +1 ] = " C";
-            matrizFalsa[matrizCarro[5].fila][matrizCarro[5].columna] = " C";
-            matrizFalsa[matrizCarro[5].fila][matrizCarro[5].columna +1 ] = " C";
-            matrizFalsa[matrizCarro[6].fila][matrizCarro[6].columna] = " C";
-            matrizFalsa[matrizCarro[6].fila][matrizCarro[6].columna +1 ] = " C";
-            matrizFalsa[matrizCarro[7].fila][matrizCarro[7].columna] = " C";
-            matrizFalsa[matrizCarro[7].fila][matrizCarro[7].columna+1] = " C";
+            matrizControl[matrizCarro[3].fila][matrizCarro[3].columna] = " C";
+            matrizControl[matrizCarro[3].fila][matrizCarro[3].columna +1 ] = " C";
+            matrizControl[matrizCarro[4].fila ][matrizCarro[4].columna] = " C";
+            matrizControl[matrizCarro[4].fila][matrizCarro[4].columna +1 ] = " C";
+            matrizControl[matrizCarro[5].fila][matrizCarro[5].columna] = " C";
+            matrizControl[matrizCarro[5].fila][matrizCarro[5].columna +1 ] = " C";
+            matrizControl[matrizCarro[6].fila][matrizCarro[6].columna] = " C";
+            matrizControl[matrizCarro[6].fila][matrizCarro[6].columna +1 ] = " C";
+            matrizControl[matrizCarro[7].fila][matrizCarro[7].columna] = " C";
+            matrizControl[matrizCarro[7].fila][matrizCarro[7].columna+1] = " C";
             
-            matrizFalsa[matrizCarro[8].fila][matrizCarro[8].columna] = " T";
-            matrizFalsa[matrizCarro[9].fila][matrizCarro[9].columna] = " T";
-            matrizFalsa[matrizCarro[10].fila][matrizCarro[10].columna] = " T";
-            matrizFalsa[matrizCarro[11].fila][matrizCarro[11].columna] = " T";
-            matrizFalsa[matrizCarro[12].fila][matrizCarro[12].columna] = " T";
-            matrizFalsa[matrizCarro[13].fila][matrizCarro[13].columna] = " T";
-            matrizFalsa[matrizCarro[14].fila][matrizCarro[14].columna] = " T";
-            matrizFalsa[matrizCarro[15].fila][matrizCarro[15].columna] = " T";
-            matrizFalsa[matrizCarro[16].fila][matrizCarro[16].columna] = " T";
-            matrizFalsa[matrizCarro[17].fila][matrizCarro[17].columna] = " T";
+            matrizControl[matrizCarro[8].fila][matrizCarro[8].columna] = " T";
+            matrizControl[matrizCarro[9].fila][matrizCarro[9].columna] = " T";
+            matrizControl[matrizCarro[10].fila][matrizCarro[10].columna] = " T";
+            matrizControl[matrizCarro[11].fila][matrizCarro[11].columna] = " T";
+            matrizControl[matrizCarro[12].fila][matrizCarro[12].columna] = " T";
+            matrizControl[matrizCarro[13].fila][matrizCarro[13].columna] = " T";
+            matrizControl[matrizCarro[14].fila][matrizCarro[14].columna] = " T";
+            matrizControl[matrizCarro[15].fila][matrizCarro[15].columna] = " T";
+            matrizControl[matrizCarro[16].fila][matrizCarro[16].columna] = " T";
+            matrizControl[matrizCarro[17].fila][matrizCarro[17].columna] = " T";
         }
     }
 
@@ -159,17 +159,16 @@ public class Tablero {
                 superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
             }
         }
-        //FIXME: cambio testeo
-        String celdaAtacar = matrizFalsa[superHuevo.fila][superHuevo.columna];
+        String celdaAtacar = matrizControl[superHuevo.fila][superHuevo.columna];
         if (celdaAtacar.equals(" H")){
             System.out.println(" La ubicación '" + input + "' ya había sido masacrado con el SuperHuevo" );
             System.out.println(" ¡Intenta nuevamente!" );           
         } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
             //TODO: reemplazar "H" en vez de agregar
-            matrizFalsa[superHuevo.fila][superHuevo.columna].replace(matrizFalsa[superHuevo.fila][superHuevo.columna],  " H");
-            calcularPuntaje(input, celdaAtacar);
+            matrizControl[superHuevo.fila][superHuevo.columna].replace(matrizControl[superHuevo.fila][superHuevo.columna],  " H");
+            calcularPuntaje(superHuevo.fila, superHuevo.columna);
         } else {
-            matrizFalsa[superHuevo.fila][superHuevo.columna] = " H";
+            matrizControl[superHuevo.fila][superHuevo.columna] = " H";
             System.out.println(" No le achuntaste :´( " );
             System.out.println(" Enfoca el ojo y DALE!");
 
@@ -200,8 +199,8 @@ public class Tablero {
         // }
     }
 
-    public void mostrarMatrizFalsa() {
-        for (String[] fila : matrizFalsa) {
+    public void mostrarMatrizControl() {
+        for (String[] fila : matrizControl) {
             String filaStr = String.join(" ", fila);
             System.out.println(filaStr);
         }
@@ -211,30 +210,31 @@ public class Tablero {
         // System.out.println(Arrays.toString(matrizTablero[fila]));
         // }
     }
+
+
     // Calcular puntaje por cada lanzamiento y mostrar resultado.
-    // Este método visible sólo dentro de clase, y es utilizado en métodos la clase.
-    public void calcularPuntaje(String input, String celdaAtacar) {
+    public void calcularPuntaje( int filaAtacar, int colAtacar) {
+        String celdaAtacar = matrizControl[filaAtacar][colAtacar];
         // Celdas verticales
         //TODO: corregir puntaje
-        //FIXME: cambio testeo 
-        String kromiArriba1 = matrizFalsa[superHuevo.fila - 1][superHuevo.columna];
-        String kromiArriba2 = matrizFalsa[superHuevo.fila - 2][superHuevo.columna];
-        String kromiAbajo1 = matrizFalsa[superHuevo.fila + 1][superHuevo.columna];
-        String kromiAbajo2 = matrizFalsa[superHuevo.fila + 2][superHuevo.columna];
+        String kromiArriba1 = matrizControl[superHuevo.fila - 1][superHuevo.columna];
+        String kromiArriba2 = matrizControl[superHuevo.fila - 2][superHuevo.columna];
+        String kromiAbajo1 = matrizControl[superHuevo.fila + 1][superHuevo.columna];
+        String kromiAbajo2 = matrizControl[superHuevo.fila + 2][superHuevo.columna];
 
         // Celdas horizontales
-        String caguanoAntes = matrizFalsa[superHuevo.fila][superHuevo.columna - 1];
-        String caguanoDespués = matrizFalsa[superHuevo.fila][superHuevo.columna + 1];
+        String caguanoAntes = matrizControl[superHuevo.fila][superHuevo.columna - 1];
+        String caguanoDespués = matrizControl[superHuevo.fila][superHuevo.columna + 1];
 
         String carro = "";
         if (celdaAtacar.equals(" T")) {
-            carro = "Trupalla";
             superHuevo.puntajeLanzamiento =+ trupalla;
-            System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+            System.out.println("¡Genial! Le diste a un Trupalla con tu SuperHuevo");
             
         } else if (celdaAtacar.equals(" K")) {
             carro = "Kromi";
             superHuevo.puntajeLanzamiento =+ kromi;
+            if (filaAtacar)
             if ((kromiAbajo1.equals(" H") && kromiAbajo2.equals(" H")) || (kromiArriba1.equals(" H") && kromiArriba2.equals(" H")) ||  (kromiArriba1.equals(" H") && kromiAbajo1.equals(" H"))) {
                 superHuevo.puntajeLanzamiento = + kromiFatality;
                 System.out.println("\r\nFatality!");

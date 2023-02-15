@@ -69,7 +69,7 @@ public class Main {
 			if (opcion.equals("1")){
 				System.out.println("\r\n\t\t   ¡A Jugar!");  
 				System.out.println("\r\n\t\tPuntaje Inicial: 0");  
-				tablero.mostrarMatrizFalsa();
+				tablero.mostrarMatrizControl();
 				// tablero.mostrarMatriz();
 				tablero.lanzarHuevo(scanner);
 			}else if (opcion.equals("2")){
