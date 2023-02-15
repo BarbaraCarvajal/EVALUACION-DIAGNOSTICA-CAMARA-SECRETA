@@ -1,9 +1,7 @@
 package com.unab;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,8 +20,9 @@ public class Tablero {
     int conteoHuevos = 0;
     // tablero
     String[][] matrizTablero = new String[16][16];
+    String[][] matrizFalsa = new String[16][16];
     // Crear instancia de clase “Huevo”,
-    static Huevo superHuevo = new Huevo(0, 0, 0);
+    Huevo superHuevo = new Huevo(0, 0, 0);
 
 
     // Calcular coordenadas del carro de forma aleatoria sin traslaparse entre si.
@@ -41,32 +40,38 @@ public class Tablero {
     final int kromiFatality = 10;
     final int caguanoFatality = 7;
 
+    // Puntaje Total
+    int puntajeTotal = 0;
+
+
     // Crear una subclase de clase Carro y asignar a lista respectiva.
     public void crearCarro() {
 
-        matrizCarro[0] = new Kromi("12-02-2000", 2, numRandom.nextInt(15), numRandom.nextInt(15), "1998", "Mercedes");
-        matrizCarro[1] = new Kromi("13-08-1993", 2, numRandom.nextInt(15), numRandom.nextInt(15), "1993", "Toyota");
-        matrizCarro[2] = new Kromi("12-09-2020", 1, numRandom.nextInt(15), numRandom.nextInt(15), "2000", "BMW");
+        
+     //TODO: Validar choque de carros
+        matrizCarro[0] = new Kromi("12-02-2000", 2, numRandom.nextInt(1,14), numRandom.nextInt(1,16), "1998", "Mercedes");
+        matrizCarro[1] = new Kromi("13-08-1993", 2, numRandom.nextInt(1,14), numRandom.nextInt(1,16), "1993", "Toyota");
+        matrizCarro[2] = new Kromi("12-09-2020", 1, numRandom.nextInt(1,14), numRandom.nextInt(1,16), "2000", "BMW");
 
-        matrizCarro[3] = new Caguano("12-04-2000", 3, numRandom.nextInt(15), numRandom.nextInt(15), "200", "naranja");
-        matrizCarro[4] = new Caguano("14-09-2010", 3, numRandom.nextInt(15), numRandom.nextInt(15), "100", "rojo");
-        matrizCarro[5] = new Caguano("15-05-2002", 2, numRandom.nextInt(15), numRandom.nextInt(15), "300", "rosa");
-        matrizCarro[6] = new Caguano("17-03-2005", 5, numRandom.nextInt(15), numRandom.nextInt(15), "150", "celeste");
-        matrizCarro[7] = new Caguano("03-05-2005", 6, numRandom.nextInt(15), numRandom.nextInt(15), "230", "negro");
+        matrizCarro[3] = new Caguano("12-04-2000", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "200", "naranja");
+        matrizCarro[4] = new Caguano("15-09-2010", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "100", "rojo");
+        matrizCarro[5] = new Caguano("15-05-2002", 2, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "300", "rosa");
+        matrizCarro[6] = new Caguano("17-03-2005", 5, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "150", "celeste");
+        matrizCarro[7] = new Caguano("03-05-2005", 6, numRandom.nextInt(1,16), numRandom.nextInt(1,15), "230", "negro");
 
-        matrizCarro[8] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla1");
-        matrizCarro[9] = new Trupalla("03-05-2005", 4, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla2");
-        matrizCarro[10] = new Trupalla("03-05-2005", 5, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla3");
-        matrizCarro[11] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla4");
-        matrizCarro[12] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla5");
-        matrizCarro[13] = new Trupalla("03-05-2005", 1, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla6");
-        matrizCarro[14] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla7");
-        matrizCarro[15] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla8");
-        matrizCarro[16] = new Trupalla("03-05-2005", 4, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla9");
-        matrizCarro[17] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15), numRandom.nextInt(15), 0, "trupalla10");
+        matrizCarro[8] = new Trupalla("03-05-2005", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla1");
+        matrizCarro[9] = new Trupalla("03-05-2005", 4, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla2");
+        matrizCarro[10] = new Trupalla("03-05-2005", 5, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla3");
+        matrizCarro[11] = new Trupalla("03-05-2005", 2, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla4");
+        matrizCarro[12] = new Trupalla("03-05-2005", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla5");
+        matrizCarro[13] = new Trupalla("03-05-2005", 1, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla6");
+        matrizCarro[14] = new Trupalla("03-05-2005", 2, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla7");
+        matrizCarro[15] = new Trupalla("03-05-2005", 3, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla8");
+        matrizCarro[16] = new Trupalla("03-05-2005", 4, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla9");
+        matrizCarro[17] = new Trupalla("03-05-2005", 2, numRandom.nextInt(1,16), numRandom.nextInt(1,16), 0, "trupalla10");
 
+        
     }
-
     public void crearTablero() {
         for (int i = 1; i < matrizTablero.length; i++) {
             matrizTablero[0][0] = "   ";
@@ -83,9 +88,62 @@ public class Tablero {
         }
     }
 
+    public void tableroFalso(){
+
+         for (int i = 1; i < matrizFalsa.length; i++) {
+            matrizFalsa[0][0] = "   ";
+            matrizFalsa[0][i] = columnas[i - 1] + " ";
+
+            for (int celdas = 1; celdas < matrizFalsa[i].length; celdas++) {
+                if (celdas > 9) {
+                    matrizFalsa[celdas][0] = Integer.toString(celdas);
+                } else {
+                    matrizFalsa[celdas][0] = " " + Integer.toString(celdas);
+                }
+                matrizFalsa[i][celdas] = "  ";
+            }
+
+            matrizFalsa[matrizCarro[0].fila][matrizCarro[0].columna] = " K";
+            matrizFalsa[matrizCarro[0].fila + 1][matrizCarro[0].columna] = " K";
+            matrizFalsa[matrizCarro[0].fila + 2][matrizCarro[0].columna] = " K";
+
+            matrizFalsa[matrizCarro[1].fila][matrizCarro[1].columna] = " K";
+            matrizFalsa[matrizCarro[1].fila+1][matrizCarro[1].columna] = " K";
+            matrizFalsa[matrizCarro[1].fila+2][matrizCarro[1].columna] = " K";
+
+            matrizFalsa[matrizCarro[2].fila][matrizCarro[2].columna] = " K";
+            matrizFalsa[matrizCarro[2].fila+1][matrizCarro[2].columna] = " K";
+            matrizFalsa[matrizCarro[2].fila+2][matrizCarro[2].columna] = " K";
+
+            matrizFalsa[matrizCarro[3].fila][matrizCarro[3].columna] = " C";
+            matrizFalsa[matrizCarro[3].fila][matrizCarro[3].columna +1 ] = " C";
+            matrizFalsa[matrizCarro[4].fila ][matrizCarro[4].columna] = " C";
+            matrizFalsa[matrizCarro[4].fila][matrizCarro[4].columna +1 ] = " C";
+            matrizFalsa[matrizCarro[5].fila][matrizCarro[5].columna] = " C";
+            matrizFalsa[matrizCarro[5].fila][matrizCarro[5].columna +1 ] = " C";
+            matrizFalsa[matrizCarro[6].fila][matrizCarro[6].columna] = " C";
+            matrizFalsa[matrizCarro[6].fila][matrizCarro[6].columna +1 ] = " C";
+            matrizFalsa[matrizCarro[7].fila][matrizCarro[7].columna] = " C";
+            matrizFalsa[matrizCarro[7].fila][matrizCarro[7].columna+1] = " C";
+            
+            matrizFalsa[matrizCarro[8].fila][matrizCarro[8].columna] = " T";
+            matrizFalsa[matrizCarro[9].fila][matrizCarro[9].columna] = " T";
+            matrizFalsa[matrizCarro[10].fila][matrizCarro[10].columna] = " T";
+            matrizFalsa[matrizCarro[11].fila][matrizCarro[11].columna] = " T";
+            matrizFalsa[matrizCarro[12].fila][matrizCarro[12].columna] = " T";
+            matrizFalsa[matrizCarro[13].fila][matrizCarro[13].columna] = " T";
+            matrizFalsa[matrizCarro[14].fila][matrizCarro[14].columna] = " T";
+            matrizFalsa[matrizCarro[15].fila][matrizCarro[15].columna] = " T";
+            matrizFalsa[matrizCarro[16].fila][matrizCarro[16].columna] = " T";
+            matrizFalsa[matrizCarro[17].fila][matrizCarro[17].columna] = " T";
+        }
+    }
+
     // Solicitar coordenada de lanzamiento,asigna el puntaje al movimiento y la
     // almacena en el listado correspondiente.
     public void lanzarHuevo(Scanner scanner) {
+
+        Huevo superHuevo = new Huevo(0, 0, 0);
         
         listaHuevo.add(superHuevo);
         System.out.print("> Ingresa Fila y columna que deseas atacar (Ej: a1): ");
@@ -101,21 +159,22 @@ public class Tablero {
                 superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
             }
         }
-
-        String celdaAtacar = matrizTablero[superHuevo.fila][superHuevo.columna];
+        //FIXME: cambio testeo
+        String celdaAtacar = matrizFalsa[superHuevo.fila][superHuevo.columna];
         if (celdaAtacar.equals(" H")){
             System.out.println(" La ubicación '" + input + "' ya había sido masacrado con el SuperHuevo" );
             System.out.println(" ¡Intenta nuevamente!" );           
         } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
-            matrizTablero[superHuevo.fila][superHuevo.columna] = " H";
+            //TODO: reemplazar "H" en vez de agregar
+            matrizFalsa[superHuevo.fila][superHuevo.columna].replace(matrizFalsa[superHuevo.fila][superHuevo.columna],  " H");
             calcularPuntaje(input, celdaAtacar);
         } else {
-            matrizTablero[superHuevo.fila][superHuevo.columna] = " H";
+            matrizFalsa[superHuevo.fila][superHuevo.columna] = " H";
             System.out.println(" No le achuntaste :´( " );
             System.out.println(" Enfoca el ojo y DALE!");
 
         }
-        System.out.println("\r\n\t\tPuntaje Total: " + superHuevo.puntajeLanzamiento);
+        
         conteoHuevos =+ 1;
 
     }
@@ -134,6 +193,20 @@ public class Tablero {
             String filaStr = String.join(" ", fila);
             System.out.println(filaStr);
         }
+        System.out.println("\r\n\t\tPuntaje Total: " + puntajeTotal);
+
+        // for (int fila = 0; fila < matrizTablero.length; fila++) {
+        // System.out.println(Arrays.toString(matrizTablero[fila]));
+        // }
+    }
+
+    public void mostrarMatrizFalsa() {
+        for (String[] fila : matrizFalsa) {
+            String filaStr = String.join(" ", fila);
+            System.out.println(filaStr);
+        }
+        System.out.println("\r\n\t\tPuntaje Total: " + puntajeTotal);
+
         // for (int fila = 0; fila < matrizTablero.length; fila++) {
         // System.out.println(Arrays.toString(matrizTablero[fila]));
         // }
@@ -142,20 +215,23 @@ public class Tablero {
     // Este método visible sólo dentro de clase, y es utilizado en métodos la clase.
     public void calcularPuntaje(String input, String celdaAtacar) {
         // Celdas verticales
-        String kromiArriba1 = matrizTablero[superHuevo.fila - 1][superHuevo.columna];
-        String kromiArriba2 = matrizTablero[superHuevo.fila - 2][superHuevo.columna];
-        String kromiAbajo1 = matrizTablero[superHuevo.fila + 1][superHuevo.columna];
-        String kromiAbajo2 = matrizTablero[superHuevo.fila + 2][superHuevo.columna];
+        //TODO: corregir puntaje
+        //FIXME: cambio testeo 
+        String kromiArriba1 = matrizFalsa[superHuevo.fila - 1][superHuevo.columna];
+        String kromiArriba2 = matrizFalsa[superHuevo.fila - 2][superHuevo.columna];
+        String kromiAbajo1 = matrizFalsa[superHuevo.fila + 1][superHuevo.columna];
+        String kromiAbajo2 = matrizFalsa[superHuevo.fila + 2][superHuevo.columna];
 
         // Celdas horizontales
-        String caguanoAntes = matrizTablero[superHuevo.fila][superHuevo.columna - 1];
-        String caguanoDespués = matrizTablero[superHuevo.fila][superHuevo.columna + 1];
+        String caguanoAntes = matrizFalsa[superHuevo.fila][superHuevo.columna - 1];
+        String caguanoDespués = matrizFalsa[superHuevo.fila][superHuevo.columna + 1];
 
         String carro = "";
         if (celdaAtacar.equals(" T")) {
             carro = "Trupalla";
             superHuevo.puntajeLanzamiento =+ trupalla;
             System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+            
         } else if (celdaAtacar.equals(" K")) {
             carro = "Kromi";
             superHuevo.puntajeLanzamiento =+ kromi;
@@ -163,6 +239,7 @@ public class Tablero {
                 superHuevo.puntajeLanzamiento = + kromiFatality;
                 System.out.println("\r\nFatality!");
                 System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                
             } else {
                 System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
             }
@@ -177,6 +254,10 @@ public class Tablero {
                 System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
             }
         }
+        for (Huevo superHuevo : listaHuevo) {            
+            puntajeTotal += superHuevo.puntajeLanzamiento;
+        }
+        
 
     }
 
@@ -244,4 +325,3 @@ public class Tablero {
         return caguanoFatality;
     }
 }
-
