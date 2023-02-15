@@ -1,7 +1,5 @@
 package com.unab;
 
-import javax.print.event.PrintEvent;
-
 /**
  * @author Luis Zenteno,Barbara Carvajal, María-Fernanda Villalobos
  *
