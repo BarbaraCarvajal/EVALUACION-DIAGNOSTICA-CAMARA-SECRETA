@@ -21,8 +21,6 @@ public class Tablero {
     // tablero
     String[][] matrizTablero = new String[16][16];
     String[][] matrizControl = new String[16][16];
-    // Crear instancia de clase “Huevo”,
-    Huevo superHuevo = new Huevo(0, 0, 0);
 
     // Calcular coordenadas del carro de forma aleatoria sin traslaparse entre si.
     // fila y columna aleatorio
@@ -49,43 +47,43 @@ public class Tablero {
     public void crearCarro() {
 
         // TODO: Validar choque de carros
-        matrizCarro[0] = new Kromi("12-02-2000", 2, numRandom.nextInt(13) + 1, numRandom.nextInt(15) + 1, "1998",
+        matrizCarro[0] = new Kromi("12-02-2000", 2, numRandom.nextInt(11) + 1, numRandom.nextInt(13) + 1, "1998",
                 "Mercedes");
-        matrizCarro[1] = new Kromi("13-08-1993", 2, numRandom.nextInt(13) + 1, numRandom.nextInt(15) + 1, "1993",
+        matrizCarro[1] = new Kromi("13-08-1993", 2, numRandom.nextInt(11) + 1, numRandom.nextInt(13) + 1, "1993",
                 "Toyota");
-        matrizCarro[2] = new Kromi("12-09-2020", 1, numRandom.nextInt(13) + 1, numRandom.nextInt(15) + 1, "2000",
+        matrizCarro[2] = new Kromi("12-09-2020", 1, numRandom.nextInt(11) + 1, numRandom.nextInt(13) + 1, "2000",
                 "BMW");
 
-        matrizCarro[3] = new Caguano("12-04-2000", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "200",
+        matrizCarro[3] = new Caguano("12-04-2000", 3, numRandom.nextInt(14), numRandom.nextInt(12) + 1, "200",
                 "naranja");
-        matrizCarro[4] = new Caguano("15-09-2010", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "100",
+        matrizCarro[4] = new Caguano("15-09-2010", 3, numRandom.nextInt(14), numRandom.nextInt(12) + 1, "100",
                 "rojo");
-        matrizCarro[5] = new Caguano("15-05-2002", 2, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "300",
+        matrizCarro[5] = new Caguano("15-05-2002", 2, numRandom.nextInt(14), numRandom.nextInt(12) + 1, "300",
                 "rosa");
-        matrizCarro[6] = new Caguano("17-03-2005", 5, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "150",
+        matrizCarro[6] = new Caguano("17-03-2005", 5, numRandom.nextInt(14), numRandom.nextInt(12) + 1, "150",
                 "celeste");
-        matrizCarro[7] = new Caguano("03-05-2005", 6, numRandom.nextInt(15) + 1, numRandom.nextInt(14) + 1, "230",
+        matrizCarro[7] = new Caguano("03-05-2005", 6, numRandom.nextInt(14), numRandom.nextInt(12) + 1, "230",
                 "negro");
 
-        matrizCarro[8] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[8] = new Trupalla("03-05-2005", 3, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla1");
-        matrizCarro[9] = new Trupalla("03-05-2005", 4, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[9] = new Trupalla("03-05-2005", 4, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla2");
-        matrizCarro[10] = new Trupalla("03-05-2005", 5, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[10] = new Trupalla("03-05-2005", 5, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla3");
-        matrizCarro[11] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[11] = new Trupalla("03-05-2005", 2, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla4");
-        matrizCarro[12] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[12] = new Trupalla("03-05-2005", 3, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla5");
-        matrizCarro[13] = new Trupalla("03-05-2005", 1, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[13] = new Trupalla("03-05-2005", 1, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla6");
-        matrizCarro[14] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[14] = new Trupalla("03-05-2005", 2, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla7");
-        matrizCarro[15] = new Trupalla("03-05-2005", 3, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[15] = new Trupalla("03-05-2005", 3, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla8");
-        matrizCarro[16] = new Trupalla("03-05-2005", 4, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[16] = new Trupalla("03-05-2005", 4, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla9");
-        matrizCarro[17] = new Trupalla("03-05-2005", 2, numRandom.nextInt(15) + 1, numRandom.nextInt(15) + 1, 0,
+        matrizCarro[17] = new Trupalla("03-05-2005", 2, numRandom.nextInt(14), numRandom.nextInt(14), 0,
                 "trupalla10");
 
     }
@@ -188,7 +186,7 @@ public class Tablero {
                 System.out.println(" ¡Intenta nuevamente!");
             } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
                 // TODO: reemplazar "H" en vez de agregar
-                calcularPuntaje();
+                calcularPuntaje(superHuevo);
                 matrizControl[filaSH][colSH] = " H";
             } else {
                 matrizControl[filaSH][colSH] = " H";
@@ -234,7 +232,7 @@ public class Tablero {
     }
 
     // Calcular puntaje por cada lanzamiento y mostrar resultado.
-    public void calcularPuntaje() {
+    public void calcularPuntaje(Huevo superHuevo) {
         String celdaAtacar = matrizControl[filaSH][colSH];
         // Celdas verticales
         String kromiArriba1 = matrizControl[filaSH - 2][colSH];
@@ -257,7 +255,7 @@ public class Tablero {
             superHuevo.setPuntajeLanzamiento(kromi);
             System.out.println("Puntaje K : " + superHuevo.getPuntajeLanzamiento());
 
-            if (filaSH == 15) {
+            if (filaSH == 14) {
                 if ((kromiArriba1.equals(" H") && kromiArriba2.equals(" H"))) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
@@ -278,7 +276,7 @@ public class Tablero {
                 } else {
                     System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
                 }
-            } else if (filaSH == 2 || filaSH == 14) {
+            } else if (filaSH == 2 || filaSH == 13) {
                 if ((kromiAbajo1.equals(" H") && kromiArriba2.equals(" H"))) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
@@ -308,7 +306,7 @@ public class Tablero {
             superHuevo.setPuntajeLanzamiento(caguano);
             System.out.println("Puntaje C : " + superHuevo.getPuntajeLanzamiento());
 
-            if (colSH == 15) {
+            if (colSH == 14) {
                 if (caguanoIzq.equals(" H")) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + caguanoFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
@@ -340,11 +338,11 @@ public class Tablero {
         }
         //FIXME: obtener instancia de lista
         System.out.println("array huevo: " + listaHuevo);
-        for (Huevo superHuevo : listaHuevo) {
-            System.out.println("instancia  huevo: " + superHuevo);
-            System.out.println("puntaje SH: " + superHuevo.getPuntajeLanzamiento());
+        for (Huevo huevo1 : listaHuevo) {
+            System.out.println("instancia  huevo: " + huevo1);
+            System.out.println("puntaje SH: " + huevo1.getPuntajeLanzamiento());
             System.out.println("puntaje Total: " + puntajeTotal);
-            puntajeTotal = +superHuevo.getPuntajeLanzamiento();
+            puntajeTotal += huevo1.getPuntajeLanzamiento();
         }
 
     }
