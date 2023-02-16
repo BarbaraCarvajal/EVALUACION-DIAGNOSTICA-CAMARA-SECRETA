@@ -165,46 +165,45 @@ public class Tablero {
         listaHuevo.add(superHuevo);
         puntajeInstancia = 0;
         boolean condCoordenada = true;
-        while (condCoordenada){
+        while (condCoordenada) {
             System.out.print("> Ingresa Fila y columna que deseas atacar (Ej: a1): ");
-        String input = scanner.nextLine();
-        // validacion
-        if (input.matches("^[a-mo-o&&[^ñÑ]](1[0-5]|[1-9])$")){
-            String colAtaque = input.substring(0, 1);
-            int filaAtaque = Integer.parseInt(input.substring(1));
-            superHuevo.setFila(filaAtaque);
-            filaSH = superHuevo.getFila();
-    
-            for (String letra : columnas) {
-                if (colAtaque.equals(letra)) {
-                    superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
-                    colSH = superHuevo.getColumna();
+            String input = scanner.nextLine();
+            // validacion
+            if (input.matches("^[a-no-o&&[^ñÑ]](1[0-5]|[1-9])$")) {
+                String colAtaque = input.substring(0, 1);
+                int filaAtaque = Integer.parseInt(input.substring(1));
+                superHuevo.setFila(filaAtaque);
+                filaSH = superHuevo.getFila();
+
+                for (String letra : columnas) {
+                    if (colAtaque.equals(letra)) {
+                        superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
+                        colSH = superHuevo.getColumna();
+                    }
                 }
-            }
-    
-            String celdaAtacar = matrizControl[filaSH][colSH];
-            if (celdaAtacar.equals(" H")) {
-                System.out.println(" La ubicación '" + input + "' ya había sido masacrada con el SuperHuevo");
-                System.out.println(" ¡Intenta nuevamente!");
-            } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
-                // TODO: reemplazar "H" en vez de agregar
-                calcularPuntaje();
-                matrizControl[filaSH][colSH] = " H";
+
+                String celdaAtacar = matrizControl[filaSH][colSH];
+                if (celdaAtacar.equals(" H")) {
+                    System.out.println(" La ubicación '" + input + "' ya había sido masacrada con el SuperHuevo");
+                    System.out.println(" ¡Intenta nuevamente!");
+                } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
+                    // TODO: reemplazar "H" en vez de agregar
+                    calcularPuntaje();
+                    matrizControl[filaSH][colSH] = " H";
+                } else {
+                    matrizControl[filaSH][colSH] = " H";
+                    System.out.println(" No le achuntaste :´( ");
+                    System.out.println(" Enfoca el ojo y DALE!");
+
+                }
+                mostrarMatrizControl();
+
             } else {
-                matrizControl[filaSH][colSH] = " H";
-                System.out.println(" No le achuntaste :´( ");
-                System.out.println(" Enfoca el ojo y DALE!");
-    
+                System.out.println("Coordenadas invalidas... ¡intenta otra vez!");
             }
-            mostrarMatrizControl();
 
-
-        }else{
-            System.out.println("Coordenadas invalidas... ¡intenta otra vez!");
         }
 
-    }
-       
     }
 
     // Obtener indice de arreglo.
@@ -338,15 +337,23 @@ public class Tablero {
 
             }
         }
-        //FIXME: obtener instancia de lista
-        System.out.println("array huevo: " + listaHuevo);
+        // FIXME: obtener instancia de lista
+
+        System.out.println("Array huevo: " + listaHuevo);
         for (Huevo superHuevo : listaHuevo) {
             System.out.println("instancia  huevo: " + superHuevo);
             System.out.println("puntaje SH: " + superHuevo.getPuntajeLanzamiento());
+            puntajeTotal = puntajeTotal + superHuevo.getPuntajeLanzamiento();
             System.out.println("puntaje Total: " + puntajeTotal);
-            puntajeTotal = +superHuevo.getPuntajeLanzamiento();
+            
         }
 
+        /*
+         * for (int x = 0; x < listaHuevo.size(); x++){
+         * System.out.println(" "+x);
+         * puntajeTotal = puntajeTotal + x;
+         * }
+         */
     }
 
     // Crear getter y setter por cada clase
