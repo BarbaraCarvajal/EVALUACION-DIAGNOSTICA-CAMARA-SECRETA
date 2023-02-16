@@ -22,7 +22,7 @@ public class Tablero {
     String[][] matrizTablero = new String[16][16];
     String[][] matrizControl = new String[16][16];
     // Crear instancia de clase “Huevo”,
-    Huevo superHuevo = new Huevo(0, 0, 0);
+   
 
     // Calcular coordenadas del carro de forma aleatoria sin traslaparse entre si.
     // fila y columna aleatorio
@@ -188,7 +188,7 @@ public class Tablero {
                     System.out.println(" ¡Intenta nuevamente!");
                 } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
                     // TODO: reemplazar "H" en vez de agregar
-                    calcularPuntaje();
+                    calcularPuntaje(superHuevo);
                     matrizControl[filaSH][colSH] = " H";
                 } else {
                     matrizControl[filaSH][colSH] = " H";
@@ -233,7 +233,7 @@ public class Tablero {
     }
 
     // Calcular puntaje por cada lanzamiento y mostrar resultado.
-    public void calcularPuntaje() {
+    public void calcularPuntaje(Huevo superHuevo) {
         String celdaAtacar = matrizControl[filaSH][colSH];
         // Celdas verticales
         String kromiArriba1 = matrizControl[filaSH - 2][colSH];
@@ -340,11 +340,11 @@ public class Tablero {
         // FIXME: obtener instancia de lista
 
         System.out.println("Array huevo: " + listaHuevo);
-        for (Huevo superHuevo : listaHuevo) {
-            System.out.println("instancia  huevo: " + superHuevo);
-            System.out.println("puntaje SH: " + superHuevo.getPuntajeLanzamiento());
-            puntajeTotal = puntajeTotal + superHuevo.getPuntajeLanzamiento();
+        for (Huevo huevo1 : listaHuevo) {
+            System.out.println("instancia  huevo: " + huevo1);
+            System.out.println("puntaje SH: " + huevo1.getPuntajeLanzamiento());
             System.out.println("puntaje Total: " + puntajeTotal);
+            puntajeTotal +=huevo1.getPuntajeLanzamiento();
             
         }
 

@@ -68,7 +68,7 @@ public class Main {
 			String opcion = scanner.nextLine();
 			if (opcion.equals("1")){
 				System.out.println("\r\n\t\t   ¡A Jugar!");  
-				System.out.println("\r\n\t\tPuntaje Inicial: "+tablero.superHuevo.getPuntajeLanzamiento() );  
+				System.out.println("\r\n\t\tPuntaje Inicial: 0");  
 				tablero.mostrarMatrizControl();
 				// tablero.mostrarMatriz();
 				tablero.lanzarHuevo(scanner);
@@ -79,7 +79,7 @@ public class Main {
 				
 			}else if (opcion.equals("3")){
 				// System.out.println("Puntaje Final: " );
-				System.out.println("puntaje total obtenido: "+tablero.superHuevo.getPuntajeLanzamiento());
+				//System.out.println("puntaje total obtenido: "+tablero.superHuevo.getPuntajeLanzamiento());
 				condMenu = false;
 			} else {
 				System.out.println("Opción inválida");
