@@ -1,5 +1,6 @@
 package com.unab;
 import java.util.Scanner;
+
 /**
  * @author Luis Zenteno,Barbara Carvajal, María-Fernanda Villalobos
  *
@@ -12,12 +13,13 @@ public class Main {
 	static Scanner scanner = new Scanner(System.in);
 
 	static public void menu(){
-
+		// creamos un objeto tipo graficas
+		Graficas grafica = new Graficas();
+		grafica.titulo();
 		System.out.println("\r\n\t\t¡Hola! ¿Cómo te llamas?");
 		String nombreJugador = scanner.nextLine();
 		System.out.println("\r\n\t\tBienvenid@ "+nombreJugador);
 		Tablero tablero = new Tablero();
-		// Graficas graph = new Graficas();
 		
 		tablero.crearTablero();
 		tablero.crearCarro();
@@ -40,7 +42,8 @@ public class Main {
 				tablero.lanzarHuevo(scanner);
 				
 			}else if (opcion.equals("3")){
-
+				grafica.gameOver();
+				System.out.println("Puntaje total: "+tablero.puntajeTotal);
 				condMenu = false;
 			} else {
 				System.out.println("Opción inválida");
