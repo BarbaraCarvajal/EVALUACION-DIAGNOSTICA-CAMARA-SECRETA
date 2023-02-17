@@ -2,6 +2,7 @@ package com.unab;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,7 +23,6 @@ public class Tablero {
     String[][] matrizTablero = new String[16][16];
     String[][] matrizControl = new String[16][16];
     // Crear instancia de clase “Huevo”,
-   
 
     // Calcular coordenadas del carro de forma aleatoria sin traslaparse entre si.
     // fila y columna aleatorio
@@ -48,46 +48,93 @@ public class Tablero {
     public void crearCarro() {
 
         // TODO: Validar choque de carros
-        matrizCarro[0] = new Kromi("12-02-2000", 2, numRandom.nextInt(12) + 1, numRandom.nextInt(14) + 1, "1998",
+        matrizCarro[0] = new Kromi("12-02-2000", 2, obtenerUbicacion(12, 14, "fila"), obtenerUbicacion(12, 14, "col"), "1998",
                 "Mercedes");
-        matrizCarro[1] = new Kromi("13-08-1993", 2, numRandom.nextInt(12) + 1, numRandom.nextInt(14) + 1, "1993",
+        matrizCarro[1] = new Kromi("13-08-1993", 2, obtenerUbicacion(12, 14, "fila"), obtenerUbicacion(12, 14, "col"), "1993",
                 "Toyota");
-        matrizCarro[2] = new Kromi("12-09-2020", 1, numRandom.nextInt(12) + 1, numRandom.nextInt(14) + 1, "2000",
+        matrizCarro[2] = new Kromi("12-09-2020", 1, obtenerUbicacion(12, 14, "fila"), obtenerUbicacion(12, 14, "col"), "2000",
                 "BMW");
 
-        matrizCarro[3] = new Caguano("12-04-2000", 3, numRandom.nextInt(14) + 1, numRandom.nextInt(13) + 1, "200",
+        matrizCarro[3] = new Caguano("12-04-2000", 3, obtenerUbicacion(14, 13, "fila"), obtenerUbicacion(14, 13, "col"), "200",
                 "naranja");
-        matrizCarro[4] = new Caguano("15-09-2010", 3, numRandom.nextInt(14) + 1, numRandom.nextInt(13) + 1, "100",
+        matrizCarro[4] = new Caguano("15-09-2010", 3, obtenerUbicacion(14, 13, "fila"), obtenerUbicacion(14, 13, "col"), "100",
                 "rojo");
-        matrizCarro[5] = new Caguano("15-05-2002", 2, numRandom.nextInt(14) + 1, numRandom.nextInt(13) + 1, "300",
+        matrizCarro[5] = new Caguano("15-05-2002", 2, obtenerUbicacion(14, 13, "fila"), obtenerUbicacion(14, 13, "col"), "300",
                 "rosa");
-        matrizCarro[6] = new Caguano("17-03-2005", 5, numRandom.nextInt(14) + 1, numRandom.nextInt(13) + 1, "150",
+        matrizCarro[6] = new Caguano("17-03-2005", 5, obtenerUbicacion(14, 13, "fila"), obtenerUbicacion(14, 13, "col"), "150",
                 "celeste");
-        matrizCarro[7] = new Caguano("03-05-2005", 6, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, "230",
+        matrizCarro[7] = new Caguano("03-05-2005", 6, obtenerUbicacion(14, 13, "fila"), obtenerUbicacion(14, 13, "col"), "230",
                 "negro");
 
-        matrizCarro[8] = new Trupalla("03-05-2005", 3, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[8] = new Trupalla("03-05-2005", 3, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla1");
-        matrizCarro[9] = new Trupalla("03-05-2005", 4, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[9] = new Trupalla("03-05-2005", 4, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla2");
-        matrizCarro[10] = new Trupalla("03-05-2005", 5, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[10] = new Trupalla("03-05-2005", 5, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla3");
-        matrizCarro[11] = new Trupalla("03-05-2005", 2, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[11] = new Trupalla("03-05-2005", 2, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla4");
-        matrizCarro[12] = new Trupalla("03-05-2005", 3, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[12] = new Trupalla("03-05-2005", 3, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla5");
-        matrizCarro[13] = new Trupalla("03-05-2005", 1, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[13] = new Trupalla("03-05-2005", 1, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla6");
-        matrizCarro[14] = new Trupalla("03-05-2005", 2, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[14] = new Trupalla("03-05-2005", 2, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla7");
-        matrizCarro[15] = new Trupalla("03-05-2005", 3, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[15] = new Trupalla("03-05-2005", 3, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla8");
-        matrizCarro[16] = new Trupalla("03-05-2005", 4, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[16] = new Trupalla("03-05-2005", 4, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla9");
-        matrizCarro[17] = new Trupalla("03-05-2005", 2, numRandom.nextInt(14) + 1, numRandom.nextInt(14) + 1, 0,
+        matrizCarro[17] = new Trupalla("03-05-2005", 2, obtenerUbicacion(14, 14, "fila"), obtenerUbicacion(14, 14, "col"), 0,
                 "trupalla10");
 
     }
+
+    public String crearUbicacion(int filaPKS, int colPKS) {
+        // Crear un objeto de la clase Random
+        Random rand = new Random();
+
+        // Definir el tamaño de la matriz
+        int filas = filaPKS;
+        int columnas = colPKS;
+
+        // Crear una estructura de datos para almacenar los números ya generados
+        HashSet<String> numerosGenerados = new HashSet<>();
+
+        // Generar un número aleatorio para la fila y otro para la columna
+        int fila = rand.nextInt(filas);
+        int columna = rand.nextInt(columnas);
+
+        // Combinar los números para formar el par fila-columna
+        String numeroAleatorio = fila + "-" + columna;
+
+        // Verificar si el número ya ha sido generado antes
+        while (numerosGenerados.contains(numeroAleatorio)) {
+            // Si ya ha sido generado, generar un nuevo número
+            fila = rand.nextInt(filas);
+            columna = rand.nextInt(columnas);
+            numeroAleatorio = fila + "-" + columna;
+        }
+
+        // Agregar el número a la lista de números generados
+        numerosGenerados.add(numeroAleatorio);
+        return numeroAleatorio;
+    }
+
+    public int obtenerUbicacion(int filaPKS, int colPKS, String celda) {
+        String ubicacion = crearUbicacion(filaPKS, colPKS);
+        String[] ubicacionDiv = ubicacion.split("-");
+        int coord = 0;
+        if (celda.equals("fila")) {
+            coord = Integer.parseInt(ubicacionDiv[0]);
+        } else { 
+            coord = Integer.parseInt(ubicacionDiv[1]);           
+        }
+        // Enviar resultado de random +1 para no salir de límites (1 al máx)
+        return coord + 1;        
+    }
+
+
+
 
     public void crearTablero() {
         for (int i = 1; i < matrizTablero.length; i++) {
@@ -205,7 +252,6 @@ public class Tablero {
         }
         mostrarMatriz();
 
-
     }
 
     // Obtener indice de arreglo.
@@ -219,9 +265,9 @@ public class Tablero {
 
         System.out.println("\r\n\t\tPuntaje Total: " + puntajeTotal);
         boolean game_on = true;
-        if (puntajeTotal == 122 ) {
+        if (puntajeTotal == 122) {
             System.out.println("\r\n\t\t¡ARRASASTE!");
-            System.out.println("\tLograste destruir todos los PKS.");     
+            System.out.println("\tLograste destruir todos los PKS.");
             System.out.println("\r\n\t\tPuntaje Final: " + puntajeTotal);
             System.out.println("\t\tJuego Terminado.");
             game_on = false;
@@ -231,11 +277,9 @@ public class Tablero {
                 System.out.println(filaStr);
             }
             System.out.println("\r\n\t\tPuntaje Total: " + puntajeTotal);
-           
+
         }
         return game_on;
-
-
 
     }
 
@@ -362,7 +406,7 @@ public class Tablero {
             }
         }
         for (Huevo huevo1 : listaHuevo) {
-            puntajeTotal +=huevo1.getPuntajeLanzamiento();  
+            puntajeTotal += huevo1.getPuntajeLanzamiento();
         }
     }
 
