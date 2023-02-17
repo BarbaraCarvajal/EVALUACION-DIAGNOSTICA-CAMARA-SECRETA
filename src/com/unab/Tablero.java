@@ -164,45 +164,47 @@ public class Tablero {
         listaHuevo.add(superHuevo);
         puntajeInstancia = 0;
         boolean condCoordenada = true;
+        String input = "";
         while (condCoordenada) {
             System.out.print("> Ingresa Fila y columna que deseas atacar (Ej: a1): ");
-            String input = scanner.nextLine();
+            input = scanner.nextLine();
             // validacion
             if (input.matches("^[a-no-o&&[^ñÑ]](1[0-5]|[1-9])$")) {
-                String colAtaque = input.substring(0, 1);
-                int filaAtaque = Integer.parseInt(input.substring(1));
-                superHuevo.setFila(filaAtaque);
-                filaSH = superHuevo.getFila();
-
-                for (String letra : columnas) {
-                    if (colAtaque.equals(letra)) {
-                        superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
-                        colSH = superHuevo.getColumna();
-                    }
-                }
-
-                String celdaAtacar = matrizControl[filaSH][colSH];
-                if (celdaAtacar.equals(" H")) {
-                    System.out.println(" La ubicación '" + input + "' ya había sido masacrada con el SuperHuevo");
-                    System.out.println(" ¡Intenta nuevamente!");
-                } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
-                    calcularPuntaje(superHuevo);
-                    matrizTablero[filaSH][colSH] = " H";
-                    matrizControl[filaSH][colSH] = " H";
-                } else {
-                    matrizTablero[filaSH][colSH] = " H";
-                    matrizControl[filaSH][colSH] = " H";
-                    System.out.println(" No le achuntaste :´( ");
-                    System.out.println(" Enfoca el ojo y DALE!");
-
-                }
-                mostrarMatriz();
-
+                condCoordenada = false;
             } else {
                 System.out.println("Coordenadas invalidas... ¡intenta otra vez!");
             }
 
         }
+        String colAtaque = input.substring(0, 1);
+        int filaAtaque = Integer.parseInt(input.substring(1));
+        superHuevo.setFila(filaAtaque);
+        filaSH = superHuevo.getFila();
+
+        for (String letra : columnas) {
+            if (colAtaque.equals(letra)) {
+                superHuevo.setColumna(findIndex(columnas, colAtaque) + 1);
+                colSH = superHuevo.getColumna();
+            }
+        }
+
+        String celdaAtacar = matrizControl[filaSH][colSH];
+        if (celdaAtacar.equals(" H")) {
+            System.out.println(" La ubicación '" + input + "' ya había sido masacrada con el SuperHuevo");
+            System.out.println(" ¡Intenta nuevamente!");
+        } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
+            calcularPuntaje(superHuevo);
+            matrizTablero[filaSH][colSH] = " H";
+            matrizControl[filaSH][colSH] = " H";
+        } else {
+            matrizTablero[filaSH][colSH] = " H";
+            matrizControl[filaSH][colSH] = " H";
+            System.out.println(" No le achuntaste :´( ");
+            System.out.println(" Enfoca el ojo y DALE!");
+
+        }
+        mostrarMatriz();
+
 
     }
 
@@ -218,10 +220,10 @@ public class Tablero {
         System.out.println("\r\n\t\tPuntaje Total: " + puntajeTotal);
         boolean game_on = true;
         if (puntajeTotal == 122 ) {
-            System.out.println("\r\n\t\t\t¡ARRASASTE!");
-            System.out.println("\t\tLograste destruir todos los PKS.");     
+            System.out.println("\r\n\t\t¡ARRASASTE!");
+            System.out.println("\tLograste destruir todos los PKS.");     
             System.out.println("\r\n\t\tPuntaje Final: " + puntajeTotal);
-            System.out.println("\t\t\tJuego Terminado.");
+            System.out.println("\t\tJuego Terminado.");
             game_on = false;
         } else {
             for (String[] fila : matrizTablero) {
