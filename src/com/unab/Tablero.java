@@ -44,6 +44,10 @@ public class Tablero {
     int filaSH, colSH;
     private int puntajeInstancia;
 
+    //Gráficas del juego
+    Graficas grafica = new Graficas();
+
+
     // Crear una subclase de clase Carro y asignar a lista respectiva.
     public void crearCarro() {
 
@@ -205,25 +209,25 @@ public class Tablero {
 
     // Solicitar coordenada de lanzamiento,asigna el puntaje al movimiento y la
     // almacena en el listado correspondiente.
-    public void lanzarHuevo(Scanner scanner) {
-
+    public boolean lanzarHuevo(Scanner scanner) {
         Huevo superHuevo = new Huevo(0, 0, 0);
         listaHuevo.add(superHuevo);
         puntajeInstancia = 0;
         boolean condCoordenada = true;
+        boolean game_on = true;
         String input = "";
         while (condCoordenada) {
             System.out.print("> Ingresa Fila y columna que deseas atacar (Ej: a1): ");
             input = scanner.nextLine();
+            System.out.print("\n");
             // validacion
-            if (input.matches("^[a-no-o&&[^ñÑ]](1[0-5]|[1-9])$")) {
+            if(input.equalsIgnoreCase("SALIR")){
                 condCoordenada = false;
-            } else {
-                System.out.println("Coordenadas invalidas... ¡intenta otra vez!");
-            }
-
-        }
-        String colAtaque = input.substring(0, 1);
+                game_on = false;
+                gameOver();
+            } else if(input.matches("^[a-no-o&&[^ñÑ]](1[0-5]|[1-9])$")) {
+                condCoordenada = false;
+                        String colAtaque = input.substring(0, 1);
         int filaAtaque = Integer.parseInt(input.substring(1));
         superHuevo.setFila(filaAtaque);
         filaSH = superHuevo.getFila();
@@ -236,13 +240,13 @@ public class Tablero {
         }
 
         String celdaAtacar = matrizControl[filaSH][colSH];
-        if (celdaAtacar.equals(" H")) {
+        if (celdaAtacar.equals("SH")) {
             System.out.println(" La ubicación '" + input + "' ya había sido masacrada con el SuperHuevo");
             System.out.println(" ¡Intenta nuevamente!");
         } else if (celdaAtacar.equals(" T") || celdaAtacar.equals(" K") || celdaAtacar.equals(" C")) {
             calcularPuntaje(superHuevo);
-            matrizTablero[filaSH][colSH] = " H";
-            matrizControl[filaSH][colSH] = " H";
+            matrizTablero[filaSH][colSH] = "SH";
+            matrizControl[filaSH][colSH] = "SH";
         } else {
             matrizTablero[filaSH][colSH] = " H";
             matrizControl[filaSH][colSH] = " H";
@@ -251,6 +255,12 @@ public class Tablero {
 
         }
         mostrarMatriz();
+            } else {
+                System.out.println("Coordenadas invalidas... ¡intenta otra vez!");
+            }
+        }
+
+        return game_on;
 
     }
 
@@ -263,15 +273,14 @@ public class Tablero {
     // Mostrar carros existentes y lanzamientos registrados(“H”).
     public boolean mostrarMatriz() {
 
-        System.out.println("\r\n\t\tPuntaje Total: " + puntajeTotal);
         boolean game_on = true;
         if (puntajeTotal == 122) {
             System.out.println("\r\n\t\t¡ARRASASTE!");
             System.out.println("\tLograste destruir todos los PKS.");
-            System.out.println("\r\n\t\tPuntaje Final: " + puntajeTotal);
-            System.out.println("\t\tJuego Terminado.");
             game_on = false;
+            gameOver();
         } else {
+            System.out.print("\n");
             for (String[] fila : matrizTablero) {
                 String filaStr = String.join(" ", fila);
                 System.out.println(filaStr);
@@ -300,52 +309,50 @@ public class Tablero {
         String carro = "";
         if (celdaAtacar.equals(" T")) {
             superHuevo.setPuntajeLanzamiento(trupalla);
-            System.out.println("Puntaje T : " + superHuevo.getPuntajeLanzamiento());
-            System.out.println("¡Genial! Le diste a un Trupalla con tu SuperHuevo");
+            System.out.println("¡Genial! Le diste a un PKS con tu SuperHuevo");
 
         } else if (celdaAtacar.equals(" K")) {
             carro = "Kromi";
             superHuevo.setPuntajeLanzamiento(kromi);
-            System.out.println("Puntaje K : " + superHuevo.getPuntajeLanzamiento());
 
             if (filaSH == 15) {
                 // Celdas verticales
                 String kromiArriba1 = matrizControl[filaSH - 2][colSH];
                 String kromiArriba2 = matrizControl[filaSH - 1][colSH];
 
-                if ((kromiArriba1.equals(" H") && kromiArriba2.equals(" H"))) {
+                if ((kromiArriba1.equals("SH") && kromiArriba2.equals("SH"))) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
-                    System.out.println("\r\nFatality!");
-                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                    grafica.fatality();
+                    System.out.println("\r\n¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
 
                 } else {
-                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                    System.out.println("¡Genial! Le diste a un PKS con tu SuperHuevo");
                 }
 
             } else if (filaSH == 1) {
                 String kromiAbajo1 = matrizControl[filaSH + 1][colSH];
                 String kromiAbajo2 = matrizControl[filaSH + 2][colSH];
-                if (kromiAbajo1.equals(" H") && kromiAbajo2.equals(" H")) {
+                if (kromiAbajo1.equals("SH") && kromiAbajo2.equals("SH")) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
-                    System.out.println("\r\nFatality!");
-                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                    grafica.fatality();
+                    System.out.println("\r\n¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
 
                 } else {
-                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                    System.out.println("¡Genial! Le diste a un PKS con tu SuperHuevo");
                 }
             } else if (filaSH == 2 || filaSH == 14) {
                 String kromiAbajo1 = matrizControl[filaSH + 1][colSH];
                 String kromiArriba2 = matrizControl[filaSH - 1][colSH];
-                if ((kromiAbajo1.equals(" H") && kromiArriba2.equals(" H"))) {
+                if ((kromiAbajo1.equals("SH") && kromiArriba2.equals("SH"))) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
-                    System.out.println("\r\nFatality!");
-                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                    grafica.fatality();
+                    System.out.println("\r\n¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
 
                 } else {
-                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                    System.out.println("¡Genial! Le diste a un PKS con tu SuperHuevo");
                 }
 
             } else {
@@ -353,61 +360,66 @@ public class Tablero {
                 String kromiArriba2 = matrizControl[filaSH - 1][colSH];
                 String kromiAbajo1 = matrizControl[filaSH + 1][colSH];
                 String kromiAbajo2 = matrizControl[filaSH + 2][colSH];
-                if ((kromiAbajo1.equals(" H") && kromiArriba2.equals(" H"))
-                        || (kromiArriba1.equals(" H") && kromiArriba2.equals(" H"))
-                        || (kromiAbajo1.equals(" H") && kromiAbajo2.equals(" H"))) {
+                if ((kromiAbajo1.equals("SH") && kromiArriba2.equals("SH"))
+                        || (kromiArriba1.equals("SH") && kromiArriba2.equals("SH"))
+                        || (kromiAbajo1.equals("SH") && kromiAbajo2.equals("SH"))) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + kromiFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
-                    System.out.println("\r\nFatality!");
-                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                    grafica.fatality();
+                    System.out.println("\r\n¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
 
                 } else {
-                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                    System.out.println("¡Genial! Le diste a un PKS con tu SuperHuevo");
                 }
             }
 
         } else {
             carro = "Caguano";
             superHuevo.setPuntajeLanzamiento(caguano);
-            System.out.println("Puntaje C : " + superHuevo.getPuntajeLanzamiento());
 
             if (colSH == 15) {
                 // Celdas horizontales
                 String caguanoIzq = matrizControl[filaSH][colSH - 1];
-                if (caguanoIzq.equals(" H")) {
+                if (caguanoIzq.equals("SH")) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + caguanoFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
-                    System.out.println("\r\nFatality!");
-                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                    grafica.fatality();
+                    System.out.println("\r\n¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
                 } else {
-                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                    System.out.println("¡Genial! Le diste a un PKS con tu SuperHuevo");
                 }
             } else if (colSH == 1) {
                 String caguanoDer = matrizControl[filaSH][colSH + 1];
-                if (caguanoDer.equals(" H")) {
+                if (caguanoDer.equals("SH")) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + caguanoFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
-                    System.out.println("\r\nFatality!");
-                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                    grafica.fatality();
+                    System.out.println("\r\n¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
                 } else {
-                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                    System.out.println("¡Genial! Le diste a un PKS con tu SuperHuevo");
                 }
             } else {
                 String caguanoDer = matrizControl[filaSH][colSH + 1];
                 String caguanoIzq = matrizControl[filaSH][colSH - 1];
-                if (caguanoIzq.equals(" H") || caguanoDer.equals(" H")) {
+                if (caguanoIzq.equals("SH") || caguanoDer.equals("SH")) {
                     puntajeInstancia = superHuevo.getPuntajeLanzamiento() + caguanoFatality;
                     superHuevo.setPuntajeLanzamiento(puntajeInstancia);
-                    System.out.println("\r\nFatality!");
-                    System.out.println("¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
+                    grafica.fatality();
+                    System.out.println("\r\n¡Felicitaciones! Terminaste de destruir un " + carro + ".\r\n");
                 } else {
-                    System.out.println("¡Genial! Le diste a un " + carro + " con tu SuperHuevo");
+                    System.out.println("¡Genial! Le diste a un PKS con tu SuperHuevo");
                 }
             }
         }
         for (Huevo huevo1 : listaHuevo) {
+            puntajeTotal = 0;
             puntajeTotal += huevo1.getPuntajeLanzamiento();
         }
+    }
+
+    public void gameOver() {
+        System.out.println("\r\n\t\tPuntaje Final: " + puntajeTotal);
+        grafica.gameOver();  
     }
 
     // Crear getter y setter por cada clase
