@@ -16,7 +16,9 @@ public class Main {
 	static public void menu() {
 		// creamos un objeto tipo graficas
 		Graficas grafica = new Graficas();
-		grafica.titulo();
+		grafica.titulo1();
+		System.out.println("\r\n\tDonde ser Vi'o es la forma de SALIR");
+
 
 		boolean game_on = true;
         boolean valid = true;
